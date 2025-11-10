@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>103871 Canada Ltd - Product Catalogue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-alt: #ffffff;
+      --primary: #111827;
+      --accent: #2563eb;
+      --accent-soft: #e5efff;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 10px;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.04);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .brand-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .brand-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-block {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      font-size: 0.75rem;
+      flex-wrap: wrap;
+      align-items: center;
+      color: var(--muted);
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge-listed {
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: #d1fae5;
+      color: #065f46;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    .search-bar {
+      margin: 10px 0 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-bar input {
+      flex: 1 1 220px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      outline: none;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent-soft);
+    }
+
+    .search-bar select {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+      background: var(--bg-alt);
+    }
+
+    .catalogue {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .product {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 10px 10px 9px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+    }
+
+    .product-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .product-name {
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 0.85rem;
+    }
+
+    .product-code {
+      font-size: 0.7rem;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+
+    .pack {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 1.6fr 1.4fr;
+      gap: 4px 8px;
+      margin-top: 4px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 0.7rem;
+    }
+
+    .value {
+      font-size: 0.75rem;
+      color: var(--primary);
+      word-break: break-word;
+    }
+
+    .listed-tag {
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+
+    .note {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 16px 10px 28px;
+      }
+      .brand-name {
+        font-size: 1.3rem;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .catalogue {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="brand-block">
+        <div class="brand-name">103871 Canada Ltd</div>
+        <div class="brand-sub">Wholesale Health, Beauty, Confectionery & General Merchandise</div>
+      </div>
+      <div class="contact-block">
+        <div class="contact-label">Contact</div>
+        <div>Fred Haroun</div>
+        <div>Cell: <a href="tel:15145028519">514-502-8519</a></div>
+        <div>Fax: 1-866-516-1271</div>
+        <div>Email: <a href="mailto:fredharoun2@gmail.com">fredharoun2@gmail.com</a></div>
+      </div>
+    </header>
+
+    <!-- META / LEGEND -->
+    <div class="meta-row">
+      <div class="last-updated">
+        Catalogue Date: <strong>01 March 2025</strong>
+      </div>
+      <div class="legend">
+        <span><span class="badge-listed">LISTED</span> = Pharmacies / key retailers</span>
+        <span>Search by Code, Name, or UPC</span>
+      </div>
+    </div>
+
+    <!-- SEARCH / FILTER -->
+    <div class="search-bar">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products by name, code or UPC..."
+        oninput="filterProducts()" />
+      <select id="listedFilter" onchange="filterProducts()">
+        <option value="all">All products</option>
+        <option value="listed">Listed only</option>
+        <option value="unlisted">Non-listed only</option>
+      </select>
+    </div>
+
+    <!-- PRODUCT CATALOGUE -->
+    <section class="catalogue" id="catalogue">
+      <!-- EXAMPLE PRODUCT 1 -->
+      <article class="product" data-listed="true"
+               data-search="132967 playtex clean confort pk-12 upc078300132967">
+        <div class="product-header">
+          <div>
+            <div class="product-name">Playtex Clean Confort</div>
+            <div class="product-code">Code: 132967</div>
+          </div>
+          <div class="price">$3.95</div>
+        </div>
+        <div class="pack">Pack: PK-12</div>
+        <div class="details">
+          <div class="label">UPC</div>
+          <div class="value">078300132967</div>
+          <div class="label">Notes</div>
+          <div class="value">Listed</div>
+        </div>
+        <div class="badge-listed listed-tag">LISTED</div>
+      </article>
+
+      <!-- EXAMPLE PRODUCT 2 -->
+      <article class="product" data-listed="true"
+               data-search="00454-2 tampax regulier pk-12 upc073010004542">
+        <div class="product-header">
+          <div>
+            <div class="product-name">Tampax Régulier</div>
+            <div class="product-code">Code: 00454-2</div>
+          </div>
+          <div class="price">$3.65</div>
+        </div>
+        <div class="pack">Pack: PK-12</div>
+        <div class="details">
+          <div class="label">UPC</div>
+          <div class="value">073010004542</div>
+          <div class="label">Notes</div>
+          <div class="value">Listed</div>
+        </div>
+        <div class="badge-listed listed-tag">LISTED</div>
+      </article>
+
+      <!-- EXAMPLE PRODUCT 3 -->
+      <article class="product" data-listed="false"
+               data-search="380579 neutrogena 141g x3 pk-30 upc62600380579">
+        <div class="product-header">
+          <div>
+            <div class="product-name">Neutrogena 141g x3</div>
+            <div class="product-code">Code: 380579</div>
+          </div>
+          <div class="price">$14.00</div>
+        </div>
+        <div class="pack">Pack: PK-30</div>
+        <div class="details">
+          <div class="label">UPC</div>
+          <div class="value">62600380579</div>
+          <div class="label">Notes</div>
+          <div class="value">Facial care</div>
+        </div>
+      </article>
+
+      <!-- EXAMPLE PRODUCT 4 -->
+      <article class="product" data-listed="true"
+               data-search="628607 halls 9 pastille cerise pk-20 exp20oct2026 upc057700628607">
+        <div class="product-header">
+          <div>
+            <div class="product-name">Halls 9 Pastille Cerise</div>
+            <div class="product-code">Code: 628607</div>
+          </div>
+          <div class="price">$1.15</div>
+        </div>
+        <div class="pack">Pack: PK-20</div>
+        <div class="details">
+          <div class="label">UPC</div>
+          <div class="value">057700628607</div>
+          <div class="label">Expiry</div>
+          <div class="value">Oct 2026</div>
+        </div>
+        <div class="badge-listed listed-tag">LISTED</div>
+      </article>
+
+      <!-- EXAMPLE PRODUCT 5 -->
+      <article class="product" data-listed="false"
+               data-search="07050-7 setaphil 50ml lotion pk-12 upc772618070507 exp juin 2027">
+        <div class="product-header">
+          <div>
+            <div class="product-name">Cetaphil Lotion 50ml</div>
+            <div class="product-code">Code: 07050-7</div>
+          </div>
+          <div class="price">$9.50</div>
+        </div>
+        <div class="pack">Pack: PK-12</div>
+        <div class="details">
+          <div class="label">UPC</div>
+          <div class="value">772618070507</div>
+          <div class="label">Expiry</div>
+          <div class="value">June 2027</div>
+        </div>
+        <div class="note">Detail approx: $19.99</div>
+      </article>
+
+      <!-- Add more products below by copying a <article class="product"> block -->
+    </section>
+  </div>
+
+  <script>
+    function filterProducts() {
+      const term = document.getElementById('searchInput').value.toLowerCase().trim();
+      const listedFilter = document.getElementById('listedFilter').value;
+      const cards = document.querySelectorAll('.product');
+
+      cards.forEach(card => {
+        const searchable = card.getAttribute('data-search') || '';
+        const isListed = card.getAttribute('data-listed') === 'true';
+
+        const matchesSearch = searchable.toLowerCase().includes(term);
+        const matchesListed =
+          listedFilter === 'all' ||
+          (listedFilter === 'listed' && isListed) ||
+          (listedFilter === 'unlisted' && !isListed);
+
+        card.style.display = (matchesSearch && matchesListed) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
