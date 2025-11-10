@@ -16,7 +16,7 @@
       --border: #e5e7eb;
       --radius: 10px;
       --shadow-soft: 0 8px 20px rgba(0,0,0,0.04);
-      --font: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, -apple-system, sans-serif;
     }
 
     * {
@@ -201,7 +201,7 @@
 
     .details {
       display: grid;
-      grid-template-columns: 1.6fr 1.4fr;
+      grid-template-columns: 1.4fr 1.6fr;
       gap: 4px 8px;
       margin-top: 4px;
     }
@@ -226,6 +226,12 @@
       font-size: 0.7rem;
       color: var(--muted);
       margin-top: 2px;
+    }
+
+    .empty-state {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 16px;
     }
 
     @media (max-width: 600px) {
@@ -265,11 +271,11 @@
     <!-- META / LEGEND -->
     <div class="meta-row">
       <div class="last-updated">
-        Catalogue Date: <strong>01 March 2025</strong>
+        Catalogue generated from latest product file.
       </div>
       <div class="legend">
-        <span><span class="badge-listed">LISTED</span> = Pharmacies / key retailers</span>
-        <span>Search by Code, Name, or UPC</span>
+        <span><span class="badge-listed">LISTED</span> = Key retail / pharmacy listed</span>
+        <span>Update products via <strong>products.csv</strong></span>
       </div>
     </div>
 
@@ -278,7 +284,7 @@
       <input
         type="text"
         id="searchInput"
-        placeholder="Search products by name, code or UPC..."
+        placeholder="Search by product name, code or UPC..."
         oninput="filterProducts()" />
       <select id="listedFilter" onchange="filterProducts()">
         <option value="all">All products</option>
@@ -288,128 +294,179 @@
     </div>
 
     <!-- PRODUCT CATALOGUE -->
-    <section class="catalogue" id="catalogue">
-      <!-- EXAMPLE PRODUCT 1 -->
-      <article class="product" data-listed="true"
-               data-search="132967 playtex clean confort pk-12 upc078300132967">
-        <div class="product-header">
-          <div>
-            <div class="product-name">Playtex Clean Confort</div>
-            <div class="product-code">Code: 132967</div>
-          </div>
-          <div class="price">$3.95</div>
-        </div>
-        <div class="pack">Pack: PK-12</div>
-        <div class="details">
-          <div class="label">UPC</div>
-          <div class="value">078300132967</div>
-          <div class="label">Notes</div>
-          <div class="value">Listed</div>
-        </div>
-        <div class="badge-listed listed-tag">LISTED</div>
-      </article>
-
-      <!-- EXAMPLE PRODUCT 2 -->
-      <article class="product" data-listed="true"
-               data-search="00454-2 tampax regulier pk-12 upc073010004542">
-        <div class="product-header">
-          <div>
-            <div class="product-name">Tampax Régulier</div>
-            <div class="product-code">Code: 00454-2</div>
-          </div>
-          <div class="price">$3.65</div>
-        </div>
-        <div class="pack">Pack: PK-12</div>
-        <div class="details">
-          <div class="label">UPC</div>
-          <div class="value">073010004542</div>
-          <div class="label">Notes</div>
-          <div class="value">Listed</div>
-        </div>
-        <div class="badge-listed listed-tag">LISTED</div>
-      </article>
-
-      <!-- EXAMPLE PRODUCT 3 -->
-      <article class="product" data-listed="false"
-               data-search="380579 neutrogena 141g x3 pk-30 upc62600380579">
-        <div class="product-header">
-          <div>
-            <div class="product-name">Neutrogena 141g x3</div>
-            <div class="product-code">Code: 380579</div>
-          </div>
-          <div class="price">$14.00</div>
-        </div>
-        <div class="pack">Pack: PK-30</div>
-        <div class="details">
-          <div class="label">UPC</div>
-          <div class="value">62600380579</div>
-          <div class="label">Notes</div>
-          <div class="value">Facial care</div>
-        </div>
-      </article>
-
-      <!-- EXAMPLE PRODUCT 4 -->
-      <article class="product" data-listed="true"
-               data-search="628607 halls 9 pastille cerise pk-20 exp20oct2026 upc057700628607">
-        <div class="product-header">
-          <div>
-            <div class="product-name">Halls 9 Pastille Cerise</div>
-            <div class="product-code">Code: 628607</div>
-          </div>
-          <div class="price">$1.15</div>
-        </div>
-        <div class="pack">Pack: PK-20</div>
-        <div class="details">
-          <div class="label">UPC</div>
-          <div class="value">057700628607</div>
-          <div class="label">Expiry</div>
-          <div class="value">Oct 2026</div>
-        </div>
-        <div class="badge-listed listed-tag">LISTED</div>
-      </article>
-
-      <!-- EXAMPLE PRODUCT 5 -->
-      <article class="product" data-listed="false"
-               data-search="07050-7 setaphil 50ml lotion pk-12 upc772618070507 exp juin 2027">
-        <div class="product-header">
-          <div>
-            <div class="product-name">Cetaphil Lotion 50ml</div>
-            <div class="product-code">Code: 07050-7</div>
-          </div>
-          <div class="price">$9.50</div>
-        </div>
-        <div class="pack">Pack: PK-12</div>
-        <div class="details">
-          <div class="label">UPC</div>
-          <div class="value">772618070507</div>
-          <div class="label">Expiry</div>
-          <div class="value">June 2027</div>
-        </div>
-        <div class="note">Detail approx: $19.99</div>
-      </article>
-
-      <!-- Add more products below by copying a <article class="product"> block -->
-    </section>
+    <section class="catalogue" id="catalogue"></section>
+    <div class="empty-state" id="emptyState" style="display:none;">
+      No products match your filters. Adjust your search or check your products.csv file.
+    </div>
   </div>
 
   <script>
+    const CSV_FILE = 'products.csv';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProducts();
+    });
+
+    async function loadProducts() {
+      try {
+        const res = await fetch(CSV_FILE + '?t=' + Date.now());
+        if (!res.ok) {
+          console.error('Could not load products.csv');
+          return;
+        }
+        const text = await res.text();
+        const products = parseCSV(text);
+        renderProducts(products);
+        window._allProducts = products; // store for filtering
+      } catch (e) {
+        console.error('Error loading products:', e);
+      }
+    }
+
+    function parseCSV(text) {
+      const rows = text.trim().split(/\r?\n/);
+      if (rows.length <= 1) return [];
+
+      const headers = rows[0].split(',').map(h => h.trim().toLowerCase());
+      const products = [];
+
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].trim();
+        if (!row) continue;
+
+        const cols = smartSplit(row);
+        const obj = {};
+        headers.forEach((h, idx) => {
+          obj[h] = (cols[idx] || '').trim();
+        });
+
+        const listed =
+          (obj.listed || '').toString().toLowerCase() === 'yes' ||
+          (obj.listed || '').toString().toLowerCase() === 'y' ||
+          (obj.listed || '').toString().toLowerCase() === 'listed' ||
+          (obj.listed || '').toString() === '1';
+
+        products.push({
+          code: obj.code || '',
+          name: obj.name || '',
+          price: obj.price || '',
+          pack: obj.pack || '',
+          upc: obj.upc || '',
+          expiry: obj.expiry || '',
+          notes: obj.notes || '',
+          listed: listed
+        });
+      }
+      return products;
+    }
+
+    // Basic CSV splitter with quote support for simple cases
+    function smartSplit(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+
+      for (let i = 0; i < line.length; i++) {
+        const char = line[i];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          result.push(current);
+          current = '';
+        } else {
+          current += char;
+        }
+      }
+      result.push(current);
+      return result;
+    }
+
+    function renderProducts(products) {
+      const container = document.getElementById('catalogue');
+      container.innerHTML = '';
+
+      products.forEach(p => {
+        const article = document.createElement('article');
+        article.className = 'product';
+        article.dataset.listed = p.listed ? 'true' : 'false';
+        article.dataset.search = [
+          p.code,
+          p.name,
+          p.upc,
+          p.pack,
+          p.expiry,
+          p.notes
+        ]
+          .join(' ')
+          .toLowerCase();
+
+        article.innerHTML = `
+          <div class="product-header">
+            <div>
+              <div class="product-name">${escapeHTML(p.name || '')}</div>
+              <div class="product-code">${p.code ? 'Code: ' + escapeHTML(p.code) : ''}</div>
+            </div>
+            <div class="price">
+              ${p.price ? '$' + escapeHTML(p.price) : ''}
+            </div>
+          </div>
+          <div class="pack">${p.pack ? 'Pack: ' + escapeHTML(p.pack) : ''}</div>
+          <div class="details">
+            ${p.upc ? `
+              <div class="label">UPC</div>
+              <div class="value">${escapeHTML(p.upc)}</div>
+            ` : ''}
+            ${p.expiry ? `
+              <div class="label">Expiry</div>
+              <div class="value">${escapeHTML(p.expiry)}</div>
+            ` : ''}
+            ${p.notes ? `
+              <div class="label">Notes</div>
+              <div class="value">${escapeHTML(p.notes)}</div>
+            ` : ''}
+          </div>
+          ${p.listed ? `<div class="badge-listed listed-tag">LISTED</div>` : ''}
+        `;
+
+        container.appendChild(article);
+      });
+
+      filterProducts(); // apply initial filter/UI state
+    }
+
     function filterProducts() {
-      const term = document.getElementById('searchInput').value.toLowerCase().trim();
+      const term = (document.getElementById('searchInput').value || '').toLowerCase().trim();
       const listedFilter = document.getElementById('listedFilter').value;
       const cards = document.querySelectorAll('.product');
+      const emptyState = document.getElementById('emptyState');
+
+      let visibleCount = 0;
 
       cards.forEach(card => {
-        const searchable = card.getAttribute('data-search') || '';
-        const isListed = card.getAttribute('data-listed') === 'true';
+        const searchable = card.dataset.search || '';
+        const isListed = card.dataset.listed === 'true';
 
-        const matchesSearch = searchable.toLowerCase().includes(term);
+        const matchesSearch = !term || searchable.includes(term);
         const matchesListed =
           listedFilter === 'all' ||
           (listedFilter === 'listed' && isListed) ||
           (listedFilter === 'unlisted' && !isListed);
 
-        card.style.display = (matchesSearch && matchesListed) ? 'flex' : 'none';
+        const show = matchesSearch && matchesListed;
+        card.style.display = show ? 'flex' : 'none';
+        if (show) visibleCount++;
       });
+
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    function escapeHTML(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
   </script>
 </body>
