@@ -10,7 +10,7 @@
       --bg-alt: #ffffff;
       --primary: #111827;
       --accent: #2563eb;
-      --accent-soft: #e5efff;
+      --accent-soft: #e5effff0;
       --text: #111827;
       --muted: #6b7280;
       --border: #e5e7eb;
@@ -38,13 +38,15 @@
       padding: 24px 16px 40px;
     }
 
+    /* HEADER */
+
     header {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 16px;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
 
     .brand-block {
@@ -83,13 +85,21 @@
       color: var(--primary);
     }
 
-    .meta-row {
+    /* META / LEGEND / ACTIONS */
+
+    .top-row {
       display: flex;
-      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin-bottom: 16px;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .last-updated {
@@ -121,35 +131,89 @@
       font-weight: 600;
     }
 
-    .search-bar {
-      margin: 10px 0 18px;
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-alt);
+      font-size: 0.75rem;
+      color: var(--primary);
+      cursor: pointer;
+      box-shadow: var(--shadow-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    /* SEARCH / FILTER / SORT */
+
+    .controls-bar {
+      margin: 6px 0 18px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
       align-items: center;
     }
 
-    .search-bar input {
+    .search-bar {
       flex: 1 1 220px;
-      padding: 8px 10px;
-      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-alt);
+      border-radius: 999px;
+      padding: 4px 10px;
       border: 1px solid var(--border);
-      font-size: 0.85rem;
+    }
+
+    .search-bar span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .search-bar input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 0.8rem;
+      background: transparent;
+      padding: 4px 2px;
+    }
+
+    select {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      background: var(--bg-alt);
+      color: var(--primary);
       outline: none;
     }
 
-    .search-bar input:focus {
+    select:focus {
       border-color: var(--accent);
       box-shadow: 0 0 0 2px var(--accent-soft);
     }
 
-    .search-bar select {
-      padding: 8px 10px;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      font-size: 0.8rem;
-      background: var(--bg-alt);
-    }
+    /* CATALOG GRID */
 
     .catalogue {
       display: grid;
@@ -192,6 +256,7 @@
       font-weight: 700;
       color: var(--accent);
       font-size: 0.9rem;
+      white-space: nowrap;
     }
 
     .pack {
@@ -199,16 +264,45 @@
       color: var(--muted);
     }
 
-    .details {
-      display: grid;
-      grid-template-columns: 1.4fr 1.6fr;
-      gap: 4px 8px;
+    .product-body {
+      display: flex;
+      gap: 8px;
       margin-top: 4px;
+    }
+
+    .product-image-wrap {
+      width: 54px;
+      min-width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #f9fafb;
+      font-size: 0.55rem;
+      color: var(--muted);
+    }
+
+    .product-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .details {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 1.8fr;
+      gap: 3px 8px;
+      align-content: flex-start;
     }
 
     .label {
       color: var(--muted);
-      font-size: 0.7rem;
+      font-size: 0.68rem;
     }
 
     .value {
@@ -234,6 +328,24 @@
       margin-top: 16px;
     }
 
+    /* PRINT STYLES */
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      .page {
+        padding: 10px 10px 20px;
+      }
+      .actions,
+      .controls-bar {
+        display: none !important;
+      }
+      .product {
+        box-shadow: none;
+      }
+    }
+
     @media (max-width: 600px) {
       .page {
         padding: 16px 10px 28px;
@@ -257,51 +369,69 @@
     <header>
       <div class="brand-block">
         <div class="brand-name">103871 Canada Ltd</div>
-        <div class="brand-sub">Wholesale Health, Beauty, Confectionery & General Merchandise</div>
+        <div class="brand-sub">Wholesale Health, Beauty, Confectionery &amp; General Merchandise</div>
       </div>
       <div class="contact-block">
         <div class="contact-label">Contact</div>
-        <div>Fred Haroun</div>
-        <div>Cell: <a href="tel:15145028519">514-502-8519</a></div>
-        <div>Fax: 1-866-516-1271</div>
-        <div>Email: <a href="mailto:fredharoun2@gmail.com">fredharoun2@gmail.com</a></div>
+        <div>Michael Sheffren</div>
+        <div>Cell: <a href="tel:15148137891">514-813-7891</a></div>
+        <div>Email: <a href="mailto:mike103781@hotmail.com">mike103781@hotmail.com</a></div>
       </div>
     </header>
 
-    <!-- META / LEGEND -->
-    <div class="meta-row">
-      <div class="last-updated">
-        Catalogue generated from latest product file.
+    <!-- META + ACTIONS -->
+    <div class="top-row">
+      <div class="meta">
+        <div class="last-updated">
+          Catalogue generated from latest <strong>products.csv</strong>.
+        </div>
+        <div class="legend">
+          <span><span class="badge-listed">LISTED</span> = Key retail / pharmacy listed</span>
+          <span>Edit products in <strong>products.csv</strong> to update this page.</span>
+        </div>
       </div>
-      <div class="legend">
-        <span><span class="badge-listed">LISTED</span> = Key retail / pharmacy listed</span>
-        <span>Update products via <strong>products.csv</strong></span>
+      <div class="actions">
+        <button class="btn primary" onclick="window.print()">
+          🧾 Print / Save as PDF
+        </button>
       </div>
     </div>
 
-    <!-- SEARCH / FILTER -->
-    <div class="search-bar">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search by product name, code or UPC..."
-        oninput="filterProducts()" />
-      <select id="listedFilter" onchange="filterProducts()">
+    <!-- CONTROLS: SEARCH / FILTER / SORT -->
+    <div class="controls-bar">
+      <div class="search-bar">
+        <span>🔍</span>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by product name, code, UPC or notes..."
+          oninput="applyFiltersAndSort()" />
+      </div>
+
+      <select id="listedFilter" onchange="applyFiltersAndSort()">
         <option value="all">All products</option>
         <option value="listed">Listed only</option>
-        <option value="unlisted">Non-listed only</option>
+        <option value="unlisted">Unlisted only</option>
+      </select>
+
+      <select id="sortSelect" onchange="applyFiltersAndSort()">
+        <option value="default">Sort: Default</option>
+        <option value="name-asc">Name (A–Z)</option>
+        <option value="price-asc">Price (Low → High)</option>
+        <option value="price-desc">Price (High → Low)</option>
       </select>
     </div>
 
     <!-- PRODUCT CATALOGUE -->
     <section class="catalogue" id="catalogue"></section>
     <div class="empty-state" id="emptyState" style="display:none;">
-      No products match your filters. Adjust your search or check your products.csv file.
+      No products match your search/filters. Check your filters or your products.csv file.
     </div>
   </div>
 
   <script>
     const CSV_FILE = 'products.csv';
+    let allProducts = [];
 
     document.addEventListener('DOMContentLoaded', () => {
       loadProducts();
@@ -315,9 +445,8 @@
           return;
         }
         const text = await res.text();
-        const products = parseCSV(text);
-        renderProducts(products);
-        window._allProducts = products; // store for filtering
+        allProducts = parseCSV(text);
+        applyFiltersAndSort();
       } catch (e) {
         console.error('Error loading products:', e);
       }
@@ -340,27 +469,31 @@
           obj[h] = (cols[idx] || '').trim();
         });
 
+        const listedVal = (obj.listed || '').toString().toLowerCase();
         const listed =
-          (obj.listed || '').toString().toLowerCase() === 'yes' ||
-          (obj.listed || '').toString().toLowerCase() === 'y' ||
-          (obj.listed || '').toString().toLowerCase() === 'listed' ||
-          (obj.listed || '').toString() === '1';
+          listedVal === 'yes' || listedVal === 'y' ||
+          listedVal === 'listed' || listedVal === '1' || listedVal === 'true';
+
+        const priceNum = parseFloat(obj.price);
+        const price = isNaN(priceNum) ? '' : priceNum.toFixed(2);
 
         products.push({
           code: obj.code || '',
           name: obj.name || '',
-          price: obj.price || '',
+          price: price,
+          rawPrice: isNaN(priceNum) ? null : priceNum,
           pack: obj.pack || '',
           upc: obj.upc || '',
           expiry: obj.expiry || '',
           notes: obj.notes || '',
-          listed: listed
+          listed: listed,
+          image: obj.image || '' // optional column
         });
       }
       return products;
     }
 
-    // Basic CSV splitter with quote support for simple cases
+    // basic CSV with quote support
     function smartSplit(line) {
       const result = [];
       let current = '';
@@ -381,87 +514,117 @@
       return result;
     }
 
-    function renderProducts(products) {
-      const container = document.getElementById('catalogue');
-      container.innerHTML = '';
+    function applyFiltersAndSort() {
+      if (!Array.isArray(allProducts)) return;
 
-      products.forEach(p => {
-        const article = document.createElement('article');
-        article.className = 'product';
-        article.dataset.listed = p.listed ? 'true' : 'false';
-        article.dataset.search = [
+      const term = (document.getElementById('searchInput').value || '')
+        .toLowerCase().trim();
+      const listedFilter = document.getElementById('listedFilter').value;
+      const sortValue = document.getElementById('sortSelect').value;
+
+      let filtered = allProducts.filter(p => {
+        // search
+        const haystack = [
           p.code,
           p.name,
           p.upc,
           p.pack,
           p.expiry,
           p.notes
-        ]
-          .join(' ')
-          .toLowerCase();
+        ].join(' ').toLowerCase();
+
+        const matchesSearch = !term || haystack.includes(term);
+
+        // listed filter
+        const matchesListed =
+          listedFilter === 'all' ||
+          (listedFilter === 'listed' && p.listed) ||
+          (listedFilter === 'unlisted' && !p.listed);
+
+        return matchesSearch && matchesListed;
+      });
+
+      // sort
+      if (sortValue === 'name-asc') {
+        filtered.sort((a, b) =>
+          (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })
+        );
+      } else if (sortValue === 'price-asc') {
+        filtered.sort((a, b) => {
+          const pa = a.rawPrice ?? Number.POSITIVE_INFINITY;
+          const pb = b.rawPrice ?? Number.POSITIVE_INFINITY;
+          return pa - pb;
+        });
+      } else if (sortValue === 'price-desc') {
+        filtered.sort((a, b) => {
+          const pa = a.rawPrice ?? -1;
+          const pb = b.rawPrice ?? -1;
+          return pb - pa;
+        });
+      }
+
+      renderProducts(filtered);
+    }
+
+    function renderProducts(products) {
+      const container = document.getElementById('catalogue');
+      const emptyState = document.getElementById('emptyState');
+
+      container.innerHTML = '';
+
+      if (!products.length) {
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      emptyState.style.display = 'none';
+
+      products.forEach(p => {
+        const article = document.createElement('article');
+        article.className = 'product';
+
+        const hasImage = p.image && p.image.length > 0;
 
         article.innerHTML = `
           <div class="product-header">
             <div>
               <div class="product-name">${escapeHTML(p.name || '')}</div>
-              <div class="product-code">${p.code ? 'Code: ' + escapeHTML(p.code) : ''}</div>
+              <div class="product-code">
+                ${p.code ? 'Code: ' + escapeHTML(p.code) : ''}
+                ${p.upc ? (p.code ? ' · ' : '') + 'UPC: ' + escapeHTML(p.upc) : ''}
+              </div>
             </div>
             <div class="price">
               ${p.price ? '$' + escapeHTML(p.price) : ''}
             </div>
           </div>
-          <div class="pack">${p.pack ? 'Pack: ' + escapeHTML(p.pack) : ''}</div>
-          <div class="details">
-            ${p.upc ? `
-              <div class="label">UPC</div>
-              <div class="value">${escapeHTML(p.upc)}</div>
-            ` : ''}
-            ${p.expiry ? `
-              <div class="label">Expiry</div>
-              <div class="value">${escapeHTML(p.expiry)}</div>
-            ` : ''}
-            ${p.notes ? `
-              <div class="label">Notes</div>
-              <div class="value">${escapeHTML(p.notes)}</div>
-            ` : ''}
+          <div class="pack">
+            ${p.pack ? 'Pack: ' + escapeHTML(p.pack) : ''}
+            ${p.expiry ? (p.pack ? ' · ' : '') + 'Expiry: ' + escapeHTML(p.expiry) : ''}
           </div>
-          ${p.listed ? `<div class="badge-listed listed-tag">LISTED</div>` : ''}
+          <div class="product-body">
+            <div class="product-image-wrap" style="${hasImage ? '' : 'display:none;'}">
+              ${hasImage ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">` : ''}
+            </div>
+            <div class="details">
+              ${p.notes ? `
+                <div class="label">Notes</div>
+                <div class="value">${escapeHTML(p.notes)}</div>
+              ` : ''}
+              ${p.listed ? `
+                <div class="label">Status</div>
+                <div class="value"><span class="badge-listed">LISTED</span></div>
+              ` : ''}
+            </div>
+          </div>
         `;
 
         container.appendChild(article);
       });
-
-      filterProducts(); // apply initial filter/UI state
-    }
-
-    function filterProducts() {
-      const term = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-      const listedFilter = document.getElementById('listedFilter').value;
-      const cards = document.querySelectorAll('.product');
-      const emptyState = document.getElementById('emptyState');
-
-      let visibleCount = 0;
-
-      cards.forEach(card => {
-        const searchable = card.dataset.search || '';
-        const isListed = card.dataset.listed === 'true';
-
-        const matchesSearch = !term || searchable.includes(term);
-        const matchesListed =
-          listedFilter === 'all' ||
-          (listedFilter === 'listed' && isListed) ||
-          (listedFilter === 'unlisted' && !isListed);
-
-        const show = matchesSearch && matchesListed;
-        card.style.display = show ? 'flex' : 'none';
-        if (show) visibleCount++;
-      });
-
-      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
     }
 
     function escapeHTML(str) {
-      return str
+      return String(str)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
