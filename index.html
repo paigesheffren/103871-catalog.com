@@ -25,6 +25,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font);
       background: var(--bg);
@@ -150,6 +154,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      text-decoration: none;
     }
 
     .btn.primary {
@@ -373,9 +378,10 @@
       </div>
       <div class="contact-block">
         <div class="contact-label">Contact</div>
-        <div>Michael Sheffren</div>
-        <div>Cell: <a href="tel:15148137891">514-813-7891</a></div>
-        <div>Email: <a href="mailto:mike103781@hotmail.com">mike103781@hotmail.com</a></div>
+        <div>Fred Haroun</div>
+        <div>Cell: <a href="tel:15145028519">514-502-8519</a></div>
+        <div>Fax: 1-866-516-1271</div>
+        <div>Email: <a href="mailto:fredharoun2@gmail.com">fredharoun2@gmail.com</a></div>
       </div>
     </header>
 
@@ -391,9 +397,8 @@
         </div>
       </div>
       <div class="actions">
-        <button class="btn primary" onclick="window.print()">
-          🧾 Print / Save as PDF
-        </button>
+        <button class="btn primary" onclick="window.print()">🧾 Print / Save as PDF</button>
+        <a class="btn" href="#pjc-gillette-energizer">➡️ Go directly to PJC Gillette – Energizer</a>
       </div>
     </div>
 
@@ -427,15 +432,101 @@
     <div class="empty-state" id="emptyState" style="display:none;">
       No products match your search/filters. Check your filters or your products.csv file.
     </div>
+
+    <!-- PJC GILLETTE – ENERGIZER SECTION -->
+    <section id="pjc-gillette-energizer" style="margin-top:32px">
+      <h2 style="font-size:1.1rem;margin-bottom:4px;color:#111827;">
+        PJC Gillette – Energizer
+      </h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:10px;">
+        Direct extract from the PJC Gillette &amp; Energizer sheet (01-Sep-25). Use the
+        table below to search and sort, or view the original PDF.
+      </p>
+
+      <!-- Embedded PDF view -->
+      <div style="border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.04);margin-bottom:16px;">
+        <iframe
+          src="pjc-gillette-energizer.pdf#view=FitH"
+          title="PJC Gillette - Energizer"
+          style="width:100%;height:60vh;border:0;"
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <!-- Structured searchable table -->
+      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-size:0.8rem;">
+        <div style="flex:1 1 220px;display:flex;align-items:center;gap:6px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;background:#fff;">
+          <span style="font-size:0.75rem;color:#6b7280;">🔍</span>
+          <input
+            id="pjcSearch"
+            type="text"
+            placeholder="Search PJC by description, code or UPC..."
+            style="flex:1;border:none;outline:none;font-size:0.8rem;background:transparent;padding:4px 2px;">
+        </div>
+        <select id="pjcCategoryFilter" style="padding:7px 10px;border-radius:999px;border:1px solid #e5e7eb;font-size:0.75rem;background:#fff;">
+          <option value="all">All categories</option>
+          <option value="Gillette Cartridges">Gillette cartridges</option>
+          <option value="Gillette Razors">Gillette razors</option>
+          <option value="Energizer Alkaline">Energizer alkaline</option>
+          <option value="Energizer Lithium">Energizer lithium</option>
+          <option value="Energizer Specialty">Energizer specialty</option>
+          <option value="Energizer Hearing">Energizer hearing</option>
+        </select>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.78rem;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e5e7eb;">
+          <thead style="background:#f3f4f6;">
+            <tr>
+              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Category</th>
+              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">PJC #</th>
+              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">UPC</th>
+              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Description</th>
+              <th style="text-align:right;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Price ($)</th>
+            </tr>
+          </thead>
+          <tbody id="pjcTableBody"></tbody>
+        </table>
+      </div>
+
+      <div id="pjcEmpty" style="display:none;font-size:0.8rem;color:#6b7280;margin-top:8px;">
+        No PJC items match your search/filters.
+      </div>
+    </section>
   </div>
 
   <script>
     const CSV_FILE = 'products.csv';
+    const PJC_CSV_FILE = 'pjc_gillette_energizer.csv';
+
     let allProducts = [];
+    let pjcProducts = [];
 
     document.addEventListener('DOMContentLoaded', () => {
       loadProducts();
+      loadPjcProducts();
+
+      // Optional: hitting Enter with "pjc" jumps directly to PJC section
+      const mainSearch = document.getElementById('searchInput');
+      if (mainSearch) {
+        mainSearch.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' && mainSearch.value.trim().toLowerCase() === 'pjc') {
+            location.hash = '#pjc-gillette-energizer';
+          }
+        });
+      }
+
+      const pjcSearch = document.getElementById('pjcSearch');
+      if (pjcSearch) {
+        pjcSearch.addEventListener('input', applyPjcFilters);
+      }
+      const pjcCategory = document.getElementById('pjcCategoryFilter');
+      if (pjcCategory) {
+        pjcCategory.addEventListener('change', applyPjcFilters);
+      }
     });
+
+    /* ---------- MAIN CATALOG (products.csv) ---------- */
 
     async function loadProducts() {
       try {
@@ -445,14 +536,14 @@
           return;
         }
         const text = await res.text();
-        allProducts = parseCSV(text);
+        allProducts = parseProductsCSV(text);
         applyFiltersAndSort();
       } catch (e) {
         console.error('Error loading products:', e);
       }
     }
 
-    function parseCSV(text) {
+    function parseProductsCSV(text) {
       const rows = text.trim().split(/\r?\n/);
       if (rows.length <= 1) return [];
 
@@ -487,13 +578,12 @@
           expiry: obj.expiry || '',
           notes: obj.notes || '',
           listed: listed,
-          image: obj.image || '' // optional column
+          image: obj.image || '' // optional
         });
       }
       return products;
     }
 
-    // basic CSV with quote support
     function smartSplit(line) {
       const result = [];
       let current = '';
@@ -517,13 +607,12 @@
     function applyFiltersAndSort() {
       if (!Array.isArray(allProducts)) return;
 
-      const term = (document.getElementById('searchInput').value || '')
+      const term = (document.getElementById('searchInput')?.value || '')
         .toLowerCase().trim();
-      const listedFilter = document.getElementById('listedFilter').value;
-      const sortValue = document.getElementById('sortSelect').value;
+      const listedFilter = document.getElementById('listedFilter')?.value || 'all';
+      const sortValue = document.getElementById('sortSelect')?.value || 'default';
 
       let filtered = allProducts.filter(p => {
-        // search
         const haystack = [
           p.code,
           p.name,
@@ -534,8 +623,6 @@
         ].join(' ').toLowerCase();
 
         const matchesSearch = !term || haystack.includes(term);
-
-        // listed filter
         const matchesListed =
           listedFilter === 'all' ||
           (listedFilter === 'listed' && p.listed) ||
@@ -544,7 +631,6 @@
         return matchesSearch && matchesListed;
       });
 
-      // sort
       if (sortValue === 'name-asc') {
         filtered.sort((a, b) =>
           (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })
@@ -570,14 +656,16 @@
       const container = document.getElementById('catalogue');
       const emptyState = document.getElementById('emptyState');
 
+      if (!container) return;
+
       container.innerHTML = '';
 
       if (!products.length) {
-        emptyState.style.display = 'block';
+        if (emptyState) emptyState.style.display = 'block';
         return;
       }
 
-      emptyState.style.display = 'none';
+      if (emptyState) emptyState.style.display = 'none';
 
       products.forEach(p => {
         const article = document.createElement('article');
@@ -620,6 +708,112 @@
         `;
 
         container.appendChild(article);
+      });
+    }
+
+    /* ---------- PJC GILLETTE / ENERGIZER (pjc_gillette_energizer.csv) ---------- */
+
+    async function loadPjcProducts() {
+      try {
+        const res = await fetch(PJC_CSV_FILE + '?t=' + Date.now());
+        if (!res.ok) {
+          console.error('Could not load pjc_gillette_energizer.csv');
+          return;
+        }
+        const text = await res.text();
+        pjcProducts = parsePjcCSV(text);
+        applyPjcFilters();
+      } catch (e) {
+        console.error('Error loading PJC products:', e);
+      }
+    }
+
+    function parsePjcCSV(text) {
+      const rows = text.trim().split(/\r?\n/);
+      if (rows.length <= 1) return [];
+
+      const headers = rows[0].split(',').map(h => h.trim().toLowerCase());
+      const items = [];
+
+      for (let i = 1; i < rows.length; i++) {
+        const row = rows[i].trim();
+        if (!row) continue;
+        const cols = smartSplit(row);
+        const obj = {};
+        headers.forEach((h, idx) => {
+          obj[h] = (cols[idx] || '').trim();
+        });
+
+        const priceNum = parseFloat(obj.price);
+        items.push({
+          category: obj.category || '',
+          code: obj.code || '',
+          upc: obj.upc || '',
+          description: obj.description || '',
+          price: isNaN(priceNum) ? '' : priceNum.toFixed(2),
+          rawPrice: isNaN(priceNum) ? null : priceNum
+        });
+      }
+      return items;
+    }
+
+    function applyPjcFilters() {
+      if (!Array.isArray(pjcProducts)) return;
+
+      const searchVal = (document.getElementById('pjcSearch')?.value || '')
+        .toLowerCase().trim();
+      const catVal = document.getElementById('pjcCategoryFilter')?.value || 'all';
+
+      let filtered = pjcProducts.filter(item => {
+        const haystack = [
+          item.category,
+          item.code,
+          item.upc,
+          item.description
+        ].join(' ').toLowerCase();
+
+        const matchesSearch = !searchVal || haystack.includes(searchVal);
+        const matchesCat =
+          catVal === 'all' || item.category === catVal;
+
+        return matchesSearch && matchesCat;
+      });
+
+      // sort by category, then description
+      filtered.sort((a, b) => {
+        const c = (a.category || '').localeCompare(b.category || '');
+        if (c !== 0) return c;
+        return (a.description || '').localeCompare(b.description || '');
+      });
+
+      renderPjcTable(filtered);
+    }
+
+    function renderPjcTable(items) {
+      const tbody = document.getElementById('pjcTableBody');
+      const empty = document.getElementById('pjcEmpty');
+      if (!tbody) return;
+
+      tbody.innerHTML = '';
+
+      if (!items.length) {
+        if (empty) empty.style.display = 'block';
+        return;
+      }
+      if (empty) empty.style.display = 'none';
+
+      items.forEach(item => {
+        const tr = document.createElement('tr');
+
+        tr.innerHTML = `
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.category)}</td>
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.code)}</td>
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.upc)}</td>
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">${escapeHTML(item.description)}</td>
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;">${item.price ? item.price : ''}</td>
+        `;
+
+        tbody.appendChild(tr);
       });
     }
 
