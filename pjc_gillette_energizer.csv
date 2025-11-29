@@ -2,35 +2,50 @@ Category,PJC#,UPC,Description,Case Pack,Price
 Gillette Cartridges,523169,047400073715,"Mach3 Regulier 5",6,13.50
 Gillette Cartridges,318616,047400179752,"Mach3 Regulier 8 Cart.",3,20.00
 Gillette Cartridges,318604,047400667259,"Mach3 Regulier 12 Cart. En Carton",6,28.00
+
 Gillette Cartridges,318634,047400662193,"Fusion5 Regulier 4",6,15.50
 Gillette Cartridges,318641,047400662070,"Fusion5 Regulier 8",6,25.00
 Gillette Cartridges,263617,047400667099,"Fusion5 Regulier 8 Cart. - En Carton",6,26.00
 Gillette Cartridges,204671,047400667082,"Fusion5 Regulier 12",3,36.00
+
 Gillette Cartridges,318623,047400156876,"Fusion Power 4",6,16.50
 Gillette Cartridges,163462,047400302532,"Proglide Power 4",6,16.50
 Gillette Cartridges,318683,047400156883,"Fusion5 Power 8",6,26.00
+
 Gillette Cartridges,163463,047400302860,"Proglide Regulier 4",6,15.50
 Gillette Cartridges,252038,047400302877,"Proglide Regulier 8",6,25.00
 Gillette Cartridges,204669,047400667112,"Proglide Reg. 8",6,26.00
 Gillette Cartridges,263634,047400649323,"Proglide Regulier 12",6,35.00
+
 Gillette Cartridges,858460,047400656147,"Proglide Power 4",6,15.50
 Gillette Cartridges,318608,047400302549,"Proglide Power 8",6,26.00
+
 Gillette Cartridges,858457,047400656161,"Proshield 8",6,26.00
+
 Gillette Cartridges,204611,047400665095,"Gillette Skinguard 4",3,15.50
 Gillette Cartridges,,047400665118,"Gillette Skinguard 8",3,26.00
+
 Gillette Cartridges,315534,047400115484,"Gillette Sensor Excel 10",3,22.00
+
 Gillette Cartridges,311903,047400141292,"Venus Regulier 4",3,13.50
 Gillette Cartridges,311902,047400141308,"Venus Regulier 8",3,21.00
+
 Gillette Cartridges,204607,047400664852,"Venus Smooth Sensible doux - 4",3,13.50
-Gillette Cartridges,218249,047400503892,"Venus Doux Somptueux Sensible ( Smooth ) + 4",3,13.50
-Gillette Cartridges,515965,047400684706,"Venus Miami à l'aube cartouches de rechange pour rasoir doux et somptueux, 4 unités",3,13.50
-Gillette Cartridges,460721,047400672260,"Venus cartouches de rechange de rasoir pour femmes, 4 unités",3,13.50
+Gillette Cartridges,218249,047400503892,"Venus Doux Somptueux Sensible (Smooth) - 4",3,13.50
+
+Gillette Cartridges,515965,047400684706,"Venus Miami à l'aube - 4",3,13.50
+Gillette Cartridges,460721,047400672260,"Venus Rasoir Doux & Somptueux - 4",3,13.50
 Gillette Cartridges,420066,047400098978,"Venus Extra Doux 4",3,13.50
-Gillette Cartridges,659053,047400653412,"Venus Somtueux Swirl 4",3,13.50
-Gillette Cartridges,204618,047400306073,"Venus ComfortGlide Freesia Women's Razor Blade Refills,",3,18.00
+
+Gillette Cartridges,659053,047400653412,"Venus Somptueux Swirl 4",3,13.50
+
+Gillette Cartridges,204618,047400306073,"Venus ComfortGlide Freesia - 4",3,18.00
+
 Gillette Cartridges,,074809903008,"Wilkinson Sword (5 Pack) - (Anglais)",20,2.00
-Gillette Razors,162476,047400658844,"Gillette-Tondeuse ( Styler ) à barbe tout usage, 1 unité",3,21.00
-Gillette Razors,177402,047400661806,"Gillette Rasoir - 3 Cartoche",3,12.00
+
+Gillette Razors,162476,047400658844,"Gillette Styler - 1 unité",3,21.00
+Gillette Razors,177402,047400661806,"Gillette Rasoir - 3 Cartouches",3,12.00
+
 Energizer Alkaline,322313,039800015464,"Energizer AA - 2",24,1.90
 Energizer Alkaline,323091,039800011329,"Energizer AA - 4",24,2.95
 Energizer Alkaline,270345,039800107978,"Energizer AA - 8",24,6.25
@@ -39,44 +54,56 @@ Energizer Alkaline,270344,039800900586,"Energizer AA - 12",12,11.95
 Energizer Alkaline,270346,039800108036,"Energizer AA - 16",12,15.95
 Energizer Alkaline,,03900109941,"Energizer AA - 20",12,17.95
 Energizer Alkaline,301694,039800018199,"Energizer AA - 24",12,21.95
+
 Energizer Alkaline,323089,039800014009,"Energizer AAA - 2",24,1.90
-Energizer Alkaline,325820,039800099099,"Energizer AAA - 4",24,2.95
+Energizer Alkaline,325820,039800099099,"Eenergizer AAA - 4",24,2.95
 Energizer Alkaline,270343,039800108050,"Energizer AAA - 8",24,6.25
 Energizer Alkaline,270335,039800109927,"Energizer AAA - 10",24,7.95
 Energizer Alkaline,321006,763800048783,"Energizer AAA - 12",24,11.95
 Energizer Alkaline,525137,763800108111,"Energizer AAA - 16",12,15.95
+
 Energizer Alkaline,323090,039800011367,"Energizer C - 2",12,4.25
 Energizer Alkaline,325801,039800011398,"Energizer D - 2",12,4.75
-Energizer Alkaline,906080,039800006080,"Energizer D8 Spéciales",12,9.50
+Energizer Alkaline,906080,039800006080,"Energizer D - 8 Spéciales",12,9.50
+
 Energizer Alkaline,325802,039800013613,"Energizer 9V - 1",24,3.75
-Energizer Alkaline,323136,039800036780,"Energizer 9V - 2",24,7.95
+Energizer Alkaline,323136,039800036780,"Eenergizer 9V - 2",24,7.95
+
 Energizer Lithium,320765,039800079305,"Energizer Lithium AAA - 2",6,6.95
 Energizer Lithium,645122,039800079336,"Energizer Lithium AAA - 4",6,11.95
 Energizer Lithium,645120,039800062826,"Energizer Lithium AA - 8",12,21.95
+
 Energizer Specialty,325914,039800088611,"Energizer 2016 - 1",6,1.90
 Energizer Specialty,326014,039800032843,"Energizer 2016 - 2",10,3.50
+
 Energizer Specialty,325916,039800088628,"Energizer 2025 - 1",6,1.90
 Energizer Specialty,326015,039800032836,"Energizer 2025 - 2",10,3.50
+
 Energizer Specialty,325918,039800088635,"Energizer 2032 - 1",6,1.90
 Energizer Specialty,326013,039800032805,"Energizer 2032 - 2",10,3.50
 Energizer Specialty,547573,039800117274,"Energizer 2032 - 4",10,6.00
+
 Energizer Specialty,325062,039800109590,"Energizer 357BPZ - 1",6,2.50
 Energizer Specialty,525071,039800110732,"Energizer 389BPZ - 1",6,1.69
 Energizer Specialty,323099,039800038593,"Energizer ECR1620BP - 1",6,2.35
 Energizer Specialty,514783,039800041586,"Energizer ECR1632BP - 1",6,2.75
 Energizer Specialty,322302,039800017529,"Energizer ECR2430BP - 1",6,2.35
 Energizer Specialty,323100,039800085139,"Energizer ECR2450BP - 1",6,2.95
+
 Energizer Specialty,325076,039800110084,"Energizer A23BPZ - 1",6,2.35
 Energizer Specialty,325077,039800110091,"Energizer A23BPZ - 2",6,3.95
 Energizer Specialty,325078,039800110060,"Energizer A27BPZ - 1",6,2.95
-Energizer Specialty,321018,039800041098,"Energizer Piles spécialisée 123 - 1",6,5.50
-Energizer Specialty,321021,039800082725,"Energizer Piles spécialisées, 123 - 2",6,10.50
-Energizer Specialty,321014,039800075062,"Energizer Piles spécialisées, CR2 - 1",6,6.00
-Energizer Specialty,323015,039800022974,"Energizer Piles spécialisées, CR2 - 2",6,11.50
+
+Energizer Specialty,321018,039800041098,"Energizer 123 - 1",6,5.50
+Energizer Specialty,321021,039800082725,"Energizer 123 - 2",6,10.50
+
+Energizer Specialty,321014,039800075062,"Energizer CR2 - 1",6,6.00
+Energizer Specialty,323015,039800022974,"Energizer CR2 - 2",6,11.50
+
 Energizer Hearing,102812,0039800102812,"Energizer AZ10 - 8",10,8.95
-Energizer Hearing,#019068,039800102836,"Energizer AZ312DP8",6,8.95
-Energizer Hearing,#019072,039800102881,"Energizer AZ312DP16",6,16.75
-Energizer Hearing,#019067,039800102829,"Energizer prothèses auditives, 8 unités, AZ13DP8",6,8.95
-Energizer Hearing,#019071,039800102874,"Energizer prothèses auditives, 16 unités, AZ13DP16",6,16.75
-Energizer Hearing,#019070,039800102867,"Energizer prothèses auditives, 16 unités, AZ10DP16",6,16.75
-Energizer Hearing,#019069,039800102850,"Energizer prothèses auditives, 8 unités, AZ675DP8",6,8.95
+Energizer Hearing,#019068,039800102836,"Energizer AZ312 - 8",6,8.95
+Energizer Hearing,#019072,039800102881,"Energizer AZ312 - 16",6,16.75
+Energizer Hearing,#019067,039800102829,"Energizer AZ13 - 8",6,8.95
+Energizer Hearing,#019071,039800102874,"Energizer AZ13 - 16",6,16.75
+Energizer Hearing,#019070,039800102867,"Energizer AZ10 - 16",6,16.75
+Energizer Hearing,#019069,039800102850,"Energizer AZ675 - 8",6,8.95
