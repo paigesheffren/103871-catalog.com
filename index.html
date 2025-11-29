@@ -433,27 +433,17 @@
       No products match your search/filters. Check your filters or your products.csv file.
     </div>
 
-    <!-- PJC GILLETTE – ENERGIZER SECTION -->
+    <!-- PJC GILLETTE – ENERGIZER SECTION (NO PDF, JUST TABLE) -->
     <section id="pjc-gillette-energizer" style="margin-top:32px">
       <h2 style="font-size:1.1rem;margin-bottom:4px;color:#111827;">
         PJC Gillette – Energizer
       </h2>
       <p style="font-size:0.85rem;color:#6b7280;margin-bottom:10px;">
-        Direct extract from the PJC Gillette &amp; Energizer sheet (01-Sep-25). Use the
-        table below to search and sort, or view the original PDF.
+        Structured catalogue based on the PJC Gillette &amp; Energizer sheet (01-Sep-25).
+        Search or filter the items below.
       </p>
 
-      <!-- Embedded PDF view -->
-      <div style="border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,0.04);margin-bottom:16px;">
-        <iframe
-          src="pjc-gillette-energizer.pdf#view=FitH"
-          title="PJC Gillette - Energizer"
-          style="width:100%;height:60vh;border:0;"
-          loading="lazy">
-        </iframe>
-      </div>
-
-      <!-- Structured searchable table -->
+      <!-- Structured searchable table controls -->
       <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-size:0.8rem;">
         <div style="flex:1 1 220px;display:flex;align-items:center;gap:6px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;background:#fff;">
           <span style="font-size:0.75rem;color:#6b7280;">🔍</span>
@@ -506,7 +496,7 @@
       loadProducts();
       loadPjcProducts();
 
-      // Optional: hitting Enter with "pjc" jumps directly to PJC section
+      // Optional: hitting Enter with "pjc" in main search jumps directly to PJC section
       const mainSearch = document.getElementById('searchInput');
       if (mainSearch) {
         mainSearch.addEventListener('keydown', (e) => {
