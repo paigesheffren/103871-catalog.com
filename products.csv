@@ -1,6 +1,87 @@
-name,price,pack,upc,expiry,notes,listed
-Playtex Clean Confort,3.95,PK-12,078300132967,,Listed,yes
-Tampax Pearl Rég 18Cnt,3.65,PK-12,073010004542,,Listed,yes
-Neutrogena 141g x3,14.00,PK-30,62600380579,,Facial care,no
-Halls 9 Pastille Cerise,1.15,PK-20,057700628607,Oct 2026,Listed,yes
-Cetaphil Lotion 50ml,9.50,PK-12,772618070507,Jun 2027,"Detail approx: $19.99",no
+code,name,price,pack,upc,expiry,notes,listed
+132967,Playtex Clean Confort,3.95,PK-12,078300132967,,Listed,yes
+00454-2,Tampax Régulier,3.65,PK-12,073010004542,,Listed,yes
+380579,Neutrogena 141g x3,14.00,PK-30,62600380579,,Facial care,no
+628607,Halls 9 Pastille Cerise,1.15,PK-20,057700628607,Oct 2026,Listed,yes
+07050-7,Cetaphil Lotion 50ml,9.50,PK-12,772618070507,Jun 2027,"Detail approx: $19.99",no
+523169,Mach3 Regulier 5,13.50,CS-6,047400073715,,Gillette Cartridges,no
+318616,Mach3 Regulier 8 Cart.,20.00,CS-3,047400179752,,Gillette Cartridges,no
+318604,Mach3 Regulier 12 Cart. En Carton,28.00,CS-6,047400667259,,Gillette Cartridges,no
+318634,Fusion5 Regulier 4,15.50,CS-6,047400662193,,Gillette Cartridges,no
+318641,Fusion5 Regulier 8,25.00,CS-6,047400662070,,Gillette Cartridges,no
+263617,Fusion5 Regulier 8 Cart. - En Carton,26.00,CS-6,047400667099,,Gillette Cartridges,no
+204671,Fusion5 Regulier 12,36.00,CS-3,047400667082,,Gillette Cartridges,no
+318623,Fusion Power 4,16.50,CS-6,047400156876,,Gillette Cartridges,no
+163462,Proglide Power 4,16.50,CS-6,047400302532,,Gillette Cartridges,no
+318683,Fusion5 Power 8,26.00,CS-6,047400156883,,Gillette Cartridges,no
+163463,Proglide Regulier 4,15.50,CS-6,047400302860,,Gillette Cartridges,no
+252038,Proglide Regulier 8,25.00,CS-6,047400302877,,Gillette Cartridges,no
+204669,Proglide Reg. 8,26.00,CS-6,047400667112,,Gillette Cartridges,no
+263634,Proglide Regulier 12,35.00,CS-6,047400649323,,Gillette Cartridges,no
+858460,Proglide Power 4,15.50,CS-6,047400656147,,Gillette Cartridges,no
+318608,Proglide Power 8,26.00,CS-6,047400302549,,Gillette Cartridges,no
+858457,Proshield 8,26.00,CS-6,047400656161,,Gillette Cartridges,no
+204611,Gillette Skinguard 4,15.50,CS-3,047400665095,,Gillette Cartridges,no
+,Gillette Skinguard 8,26.00,CS-3,047400665118,,Gillette Cartridges,no
+315534,Gillette Sensor Excel 10,22.00,CS-3,047400115484,,Gillette Cartridges,no
+311903,Venus Regulier 4,13.50,CS-3,047400141292,,Gillette Cartridges,no
+311902,Venus Regulier 8,21.00,CS-3,047400141308,,Gillette Cartridges,no
+204607,Venus Smooth Sensible doux - 4,13.50,CS-3,047400664852,,Gillette Cartridges,no
+218249,Venus Doux Somptueux Sensible (Smooth) - 4,13.50,CS-3,047400503892,,Gillette Cartridges,no
+515965,Venus Miami à l'aube - 4,13.50,CS-3,047400684706,,Gillette Cartridges,no
+460721,Venus Rasoir Doux & Somptueux - 4,13.50,CS-3,047400672260,,Gillette Cartridges,no
+420066,Venus Extra Doux 4,13.50,CS-3,047400098978,,Gillette Cartridges,no
+659053,Venus Somptueux Swirl 4,13.50,CS-3,047400653412,,Gillette Cartridges,no
+204618,Venus ComfortGlide Freesia - 4,18.00,CS-3,047400306073,,Gillette Cartridges,no
+,Wilkinson Sword (5 Pack) - (Anglais),2.00,CS-20,074809903008,,Gillette Cartridges,no
+162476,Gillette Styler - 1 unité,21.00,CS-3,047400658844,,Gillette Razors,no
+177402,Gillette Rasoir - 3 Cartouches,12.00,CS-3,047400661806,,Gillette Razors,no
+322313,Energizer AA - 2,1.90,CS-24,039800015464,,Energizer Alkaline,no
+323091,Energizer AA - 4,2.95,CS-24,039800011329,,Energizer Alkaline,no
+270345,Energizer AA - 8,6.25,CS-24,039800107978,,Energizer Alkaline,no
+,Energizer AA - 10,7.95,CS-24,039800109903,,Energizer Alkaline,no
+270344,Energizer AA - 12,11.95,CS-12,039800900586,,Energizer Alkaline,no
+270346,Energizer AA - 16,15.95,CS-12,039800108036,,Energizer Alkaline,no
+,Energizer AA - 20,17.95,CS-12,03900109941,,Energizer Alkaline,no
+301694,Energizer AA - 24,21.95,CS-12,039800018199,,Energizer Alkaline,no
+323089,Energizer AAA - 2,1.90,CS-24,039800014009,,Energizer Alkaline,no
+325820,Eenergizer AAA - 4,2.95,CS-24,039800099099,,Energizer Alkaline,no
+270343,Energizer AAA - 8,6.25,CS-24,039800108050,,Energizer Alkaline,no
+270335,Energizer AAA - 10,7.95,CS-24,039800109927,,Energizer Alkaline,no
+321006,Energizer AAA - 12,11.95,CS-24,763800048783,,Energizer Alkaline,no
+525137,Energizer AAA - 16,15.95,CS-12,763800108111,,Energizer Alkaline,no
+323090,Energizer C - 2,4.25,CS-12,039800011367,,Energizer Alkaline,no
+325801,Energizer D - 2,4.75,CS-12,039800011398,,Energizer Alkaline,no
+906080,Energizer D - 8 Spéciales,9.50,CS-12,039800006080,,Energizer Alkaline,no
+325802,Energizer 9V - 1,3.75,CS-24,039800013613,,Energizer Alkaline,no
+323136,Eenergizer 9V - 2,7.95,CS-24,039800036780,,Energizer Alkaline,no
+320765,Energizer Lithium AAA - 2,6.95,CS-6,039800079305,,Energizer Lithium,no
+645122,Energizer Lithium AAA - 4,11.95,CS-6,039800079336,,Energizer Lithium,no
+645120,Energizer Lithium AA - 8,21.95,CS-12,039800062826,,Energizer Lithium,no
+325914,Energizer 2016 - 1,1.90,CS-6,039800088611,,Energizer Specialty,no
+326014,Energizer 2016 - 2,3.50,CS-10,039800032843,,Energizer Specialty,no
+325916,Energizer 2025 - 1,1.90,CS-6,039800088628,,Energizer Specialty,no
+326015,Energizer 2025 - 2,3.50,CS-10,039800032836,,Energizer Specialty,no
+325918,Energizer 2032 - 1,1.90,CS-6,039800088635,,Energizer Specialty,no
+326013,Energizer 2032 - 2,3.50,CS-10,039800032805,,Energizer Specialty,no
+547573,Energizer 2032 - 4,6.00,CS-10,039800117274,,Energizer Specialty,no
+325062,Energizer 357BPZ - 1,2.50,CS-6,039800109590,,Energizer Specialty,no
+525071,Energizer 389BPZ - 1,1.69,CS-6,039800110732,,Energizer Specialty,no
+323099,Energizer ECR1620BP - 1,2.35,CS-6,039800038593,,Energizer Specialty,no
+514783,Energizer ECR1632BP - 1,2.75,CS-6,039800041586,,Energizer Specialty,no
+322302,Energizer ECR2430BP - 1,2.35,CS-6,039800017529,,Energizer Specialty,no
+323100,Energizer ECR2450BP - 1,2.95,CS-6,039800085139,,Energizer Specialty,no
+325076,Energizer A23BPZ - 1,2.35,CS-6,039800110084,,Energizer Specialty,no
+325077,Energizer A23BPZ - 2,3.95,CS-6,039800110091,,Energizer Specialty,no
+325078,Energizer A27BPZ - 1,2.95,CS-6,039800110060,,Energizer Specialty,no
+321018,Energizer 123 - 1,5.50,CS-6,039800041098,,Energizer Specialty,no
+321021,Energizer 123 - 2,10.50,CS-6,039800082725,,Energizer Specialty,no
+321014,Energizer CR2 - 1,6.00,CS-6,039800075062,,Energizer Specialty,no
+323015,Energizer CR2 - 2,11.50,CS-6,039800022974,,Energizer Specialty,no
+102812,Energizer AZ10 - 8,8.95,CS-10,0039800102812,,Energizer Hearing,no
+#019068,Energizer AZ312 - 8,8.95,CS-6,039800102836,,Energizer Hearing,no
+#019072,Energizer AZ312 - 16,16.75,CS-6,039800102881,,Energizer Hearing,no
+#019067,Energizer AZ13 - 8,8.95,CS-6,039800102829,,Energizer Hearing,no
+#019071,Energizer AZ13 - 16,16.75,CS-6,039800102874,,Energizer Hearing,no
+#019070,Energizer AZ10 - 16,16.75,CS-6,039800102867,,Energizer Hearing,no
+#019069,Energizer AZ675 - 8,8.95,CS-6,039800102850,,Energizer Hearing,no
