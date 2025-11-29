@@ -433,7 +433,7 @@
       No products match your search/filters. Check your filters or your products.csv file.
     </div>
 
-    <!-- PJC GILLETTE – ENERGIZER SECTION (NO PDF, JUST TABLE) -->
+    <!-- PJC GILLETTE – ENERGIZER SECTION (TABLE ONLY) -->
     <section id="pjc-gillette-energizer" style="margin-top:32px">
       <h2 style="font-size:1.1rem;margin-bottom:4px;color:#111827;">
         PJC Gillette – Energizer
@@ -443,7 +443,7 @@
         Search or filter the items below.
       </p>
 
-      <!-- Structured searchable table controls -->
+      <!-- PJC Controls -->
       <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-size:0.8rem;">
         <div style="flex:1 1 220px;display:flex;align-items:center;gap:6px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;background:#fff;">
           <span style="font-size:0.75rem;color:#6b7280;">🔍</span>
@@ -464,6 +464,7 @@
         </select>
       </div>
 
+      <!-- PJC Table -->
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:0.78rem;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e5e7eb;">
           <thead style="background:#f3f4f6;">
@@ -472,6 +473,7 @@
               <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">PJC #</th>
               <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">UPC</th>
               <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Description</th>
+              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Case Pack</th>
               <th style="text-align:right;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Price ($)</th>
             </tr>
           </thead>
@@ -496,7 +498,7 @@
       loadProducts();
       loadPjcProducts();
 
-      // Optional: hitting Enter with "pjc" in main search jumps directly to PJC section
+      // Optional: typing "pjc" and pressing Enter in main search jumps to PJC section
       const mainSearch = document.getElementById('searchInput');
       if (mainSearch) {
         mainSearch.addEventListener('keydown', (e) => {
@@ -735,11 +737,16 @@
         });
 
         const priceNum = parseFloat(obj.price);
+        const category = obj.category || '';
+        const pjcCode = obj['pjc#'] || obj.pjc || '';
+        const casePack = obj['case pack'] || obj.casepack || '';
+
         items.push({
-          category: obj.category || '',
-          code: obj.code || '',
+          category: category,
+          code: pjcCode,
           upc: obj.upc || '',
           description: obj.description || '',
+          casePack: casePack,
           price: isNaN(priceNum) ? '' : priceNum.toFixed(2),
           rawPrice: isNaN(priceNum) ? null : priceNum
         });
@@ -759,7 +766,8 @@
           item.category,
           item.code,
           item.upc,
-          item.description
+          item.description,
+          item.casePack
         ].join(' ').toLowerCase();
 
         const matchesSearch = !searchVal || haystack.includes(searchVal);
@@ -777,6 +785,11 @@
       });
 
       renderPjcTable(filtered);
+    }
+
+    function formatDescription(desc) {
+      // Turn patterns like "X 2", "x2", " X8 " into "- 2", "- 2", "- 8"
+      return String(desc).replace(/ ?[Xx] ?(\d+)/g, ' - $1');
     }
 
     function renderPjcTable(items) {
@@ -799,7 +812,8 @@
           <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.category)}</td>
           <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.code)}</td>
           <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.upc)}</td>
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">${escapeHTML(item.description)}</td>
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">${escapeHTML(formatDescription(item.description))}</td>
+          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.casePack)}</td>
           <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;">${item.price ? item.price : ''}</td>
         `;
 
