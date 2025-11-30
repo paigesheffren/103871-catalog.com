@@ -276,9 +276,9 @@
     }
 
     .product-image-wrap {
-      width: 54px;
-      min-width: 54px;
-      height: 54px;
+      width: 70px;
+      min-width: 70px;
+      height: 70px;
       border-radius: 8px;
       border: 1px solid var(--border);
       display: flex;
@@ -314,17 +314,6 @@
       font-size: 0.75rem;
       color: var(--primary);
       word-break: break-word;
-    }
-
-    .listed-tag {
-      align-self: flex-start;
-      margin-top: 4px;
-    }
-
-    .note {
-      font-size: 0.7rem;
-      color: var(--muted);
-      margin-top: 2px;
     }
 
     .empty-state {
@@ -488,6 +477,7 @@
   </div>
 
   <script>
+    // MAIN CATALOG CSV: code,name,price,pack,upc,expiry,notes,listed,image
     const CSV_FILE = 'products.csv';
     const PJC_CSV_FILE = 'pjc_gillette_energizer.csv';
 
@@ -498,7 +488,6 @@
       loadProducts();
       loadPjcProducts();
 
-      // Optional: typing "pjc" and pressing Enter in main search jumps to PJC section
       const mainSearch = document.getElementById('searchInput');
       if (mainSearch) {
         mainSearch.addEventListener('keydown', (e) => {
@@ -570,7 +559,7 @@
           expiry: obj.expiry || '',
           notes: obj.notes || '',
           listed: listed,
-          image: obj.image || '' // optional
+          image: obj.image || '' // filename like playtex.jpg
         });
       }
       return products;
@@ -664,6 +653,7 @@
         article.className = 'product';
 
         const hasImage = p.image && p.image.length > 0;
+        const imgSrc = hasImage ? 'images/' + p.image : '';
 
         article.innerHTML = `
           <div class="product-header">
@@ -684,7 +674,7 @@
           </div>
           <div class="product-body">
             <div class="product-image-wrap" style="${hasImage ? '' : 'display:none;'}">
-              ${hasImage ? `<img src="${escapeHTML(p.image)}" alt="${escapeHTML(p.name)}">` : ''}
+              ${hasImage ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.name)}">` : ''}
             </div>
             <div class="details">
               ${p.notes ? `
@@ -777,7 +767,6 @@
         return matchesSearch && matchesCat;
       });
 
-      // sort by category, then description
       filtered.sort((a, b) => {
         const c = (a.category || '').localeCompare(b.category || '');
         if (c !== 0) return c;
@@ -788,7 +777,6 @@
     }
 
     function formatDescription(desc) {
-      // Turn patterns like "X 2", "x2", " X8 " into "- 2", "- 2", "- 8"
       return String(desc).replace(/ ?[Xx] ?(\d+)/g, ' - $1');
     }
 
