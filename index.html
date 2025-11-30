@@ -229,26 +229,58 @@
     .product {
       background: var(--bg-alt);
       border-radius: var(--radius);
-      padding: 10px 10px 9px;
+      padding: 12px 12px 10px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow-soft);
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 8px;
       font-size: 0.8rem;
     }
 
-    .product-header {
+    .product-image-wrap {
+      width: 100%;
+      height: 190px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .product-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .product-main {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .product-header-top {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
       gap: 8px;
-      align-items: baseline;
+    }
+
+    .product-name-block {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
     }
 
     .product-name {
       font-weight: 600;
       color: var(--primary);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     .product-code {
@@ -260,47 +292,29 @@
     .price {
       font-weight: 700;
       color: var(--accent);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       white-space: nowrap;
     }
 
-    .pack {
+    .product-meta {
       font-size: 0.75rem;
       color: var(--muted);
-    }
-
-    .product-body {
       display: flex;
-      gap: 8px;
-      margin-top: 4px;
+      flex-wrap: wrap;
+      gap: 6px 10px;
     }
 
-    .product-image-wrap {
-      width: 160px;
-      min-width: 160px;
-      height: 160px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #f9fafb;
-      font-size: 0.55rem;
-      color: var(--muted);
+    .product-meta span::before {
+      content: "• ";
     }
 
-    .product-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
+    .product-meta span:first-child::before {
+      content: "";
     }
 
     .details {
-      flex: 1;
       display: grid;
-      grid-template-columns: 1.2fr 1.8fr;
+      grid-template-columns: 1.1fr 1.9fr;
       gap: 3px 8px;
       align-content: flex-start;
     }
@@ -428,7 +442,7 @@
         PJC Gillette – Energizer
       </h2>
       <p style="font-size:0.85rem;color:#6b7280;margin-bottom:10px;">
-        Structured catalogue based on the PJC Gillette &amp; Energizer sheet (01-Sep-25).
+        Structured catalogue based on the PJC Gillette &amp; Energizer sheet.
         Search or filter the items below.
       </p>
 
@@ -559,7 +573,7 @@
           expiry: obj.expiry || '',
           notes: obj.notes || '',
           listed: listed,
-          image: obj.image || '' // filename like playtex.jpg
+          image: obj.image || '' // filename or URL
         });
       }
       return products;
@@ -652,30 +666,46 @@
         const article = document.createElement('article');
         article.className = 'product';
 
-        const hasImage = p.image && p.image.length > 0;
-        const imgSrc = hasImage ? 'images/' + p.image : '';
+        const rawImage = (p.image || '').trim();
+        const hasImage = rawImage.length > 0;
+        let imgSrc = '';
+
+        if (hasImage) {
+          if (/^https?:\/\//i.test(rawImage)) {
+            imgSrc = rawImage;                 // full URL
+          } else if (rawImage.toLowerCase().startsWith('images/')) {
+            imgSrc = rawImage;                 // already includes images/
+          } else {
+            imgSrc = 'images/' + rawImage;     // just filename
+          }
+        }
 
         article.innerHTML = `
-          <div class="product-header">
-            <div>
-              <div class="product-name">${escapeHTML(p.name || '')}</div>
-              <div class="product-code">
-                ${p.code ? 'Code: ' + escapeHTML(p.code) : ''}
-                ${p.upc ? (p.code ? ' · ' : '') + 'UPC: ' + escapeHTML(p.upc) : ''}
+          ${hasImage ? `
+            <div class="product-image-wrap">
+              <img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.name || '')}">
+            </div>
+          ` : ''}
+
+          <div class="product-main">
+            <div class="product-header-top">
+              <div class="product-name-block">
+                <div class="product-name">${escapeHTML(p.name || '')}</div>
+                <div class="product-code">
+                  ${p.code ? 'Code: ' + escapeHTML(p.code) : ''}
+                  ${p.upc ? (p.code ? ' · ' : '') + 'UPC: ' + escapeHTML(p.upc) : ''}
+                </div>
+              </div>
+              <div class="price">
+                ${p.price ? '$' + escapeHTML(p.price) : ''}
               </div>
             </div>
-            <div class="price">
-              ${p.price ? '$' + escapeHTML(p.price) : ''}
+
+            <div class="product-meta">
+              ${p.pack ? `<span>Pack: ${escapeHTML(p.pack)}</span>` : ''}
+              ${p.expiry ? `<span>Expiry: ${escapeHTML(p.expiry)}</span>` : ''}
             </div>
-          </div>
-          <div class="pack">
-            ${p.pack ? 'Pack: ' + escapeHTML(p.pack) : ''}
-            ${p.expiry ? (p.pack ? ' · ' : '') + 'Expiry: ' + escapeHTML(p.expiry) : ''}
-          </div>
-          <div class="product-body">
-            <div class="product-image-wrap" style="${hasImage ? '' : 'display:none;'}">
-              ${hasImage ? `<img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.name)}">` : ''}
-            </div>
+
             <div class="details">
               ${p.notes ? `
                 <div class="label">Notes</div>
