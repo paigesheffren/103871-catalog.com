@@ -1,6 +1,6 @@
-name,price,pack,upc,expiry,notes,listed
+name,price,pack,upc,expiry,notes,listed,image
 Playtex Clean Confort,3.95,PK-12,078300132967,,Listed,yes
-Tampax Régulier,3.65,PK-12,073010004542,,Listed,yes
+Tampax Régulier,3.65,PK-12,073010004542,,Listed,yes,tampaxpearl.jpg
 Neutrogena 141g x3,14.00,PK-30,62600380579,,Facial care,no
 Halls 9 Pastille Cerise,1.15,PK-20,057700628607,Oct 2026,Listed,yes
 Cetaphil Lotion 50ml,9.50,PK-12,772618070507,Jun 2027,"Detail approx: $19.99",no
