@@ -249,6 +249,13 @@
       overflow: hidden;
       background: #ffffff;
       margin-bottom: 4px;
+      cursor: zoom-in;
+      transition: box-shadow 0.15s ease, transform 0.15s ease;
+    }
+
+    .product-image-wrap:hover {
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      transform: translateY(-1px);
     }
 
     .product-image-wrap img {
@@ -256,6 +263,7 @@
       height: 100%;
       object-fit: contain;
       display: block;
+      pointer-events: none; /* click handled on wrapper */
     }
 
     .product-main {
@@ -336,6 +344,73 @@
       margin-top: 16px;
     }
 
+    /* IMAGE MODAL (LIGHTBOX) */
+
+    .image-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 20px;
+    }
+
+    .image-modal-backdrop.open {
+      display: flex;
+    }
+
+    .image-modal-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      background: #ffffff;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      padding: 10px 10px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .image-modal-img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .image-modal-caption {
+      font-size: 0.8rem;
+      color: #4b5563;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    .image-modal-close {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(17,24,39,0.85);
+      color: #f9fafb;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-modal-close:hover {
+      background: rgba(17,24,39,1);
+    }
+
     /* PRINT STYLES */
 
     @media print {
@@ -351,6 +426,9 @@
       }
       .product {
         box-shadow: none;
+      }
+      .image-modal-backdrop {
+        display: none !important;
       }
     }
 
@@ -490,8 +568,16 @@
     </section>
   </div>
 
+  <!-- IMAGE LIGHTBOX MODAL -->
+  <div id="imageModal" class="image-modal-backdrop" onclick="imageModalBackdropClick(event)">
+    <div class="image-modal-content">
+      <button type="button" class="image-modal-close" onclick="closeImageModal()">×</button>
+      <img id="imageModalImg" class="image-modal-img" src="" alt="">
+      <div id="imageModalCaption" class="image-modal-caption"></div>
+    </div>
+  </div>
+
   <script>
-    // MAIN CATALOG CSV: code,name,price,pack,upc,expiry,notes,listed,image
     const CSV_FILE = 'products.csv';
     const PJC_CSV_FILE = 'pjc_gillette_energizer.csv';
 
@@ -519,6 +605,12 @@
       if (pjcCategory) {
         pjcCategory.addEventListener('change', applyPjcFilters);
       }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeImageModal();
+        }
+      });
     });
 
     /* ---------- MAIN CATALOG (products.csv) ---------- */
@@ -573,7 +665,7 @@
           expiry: obj.expiry || '',
           notes: obj.notes || '',
           listed: listed,
-          image: obj.image || '' // filename or URL
+          image: obj.image || ''
         });
       }
       return products;
@@ -672,11 +764,11 @@
 
         if (hasImage) {
           if (/^https?:\/\//i.test(rawImage)) {
-            imgSrc = rawImage;                 // full URL
+            imgSrc = rawImage;
           } else if (rawImage.toLowerCase().startsWith('images/')) {
-            imgSrc = rawImage;                 // already includes images/
+            imgSrc = rawImage;
           } else {
-            imgSrc = 'images/' + rawImage;     // just filename
+            imgSrc = 'images/' + rawImage;
           }
         }
 
@@ -718,6 +810,15 @@
             </div>
           </div>
         `;
+
+        if (hasImage) {
+          const wrapper = article.querySelector('.product-image-wrap');
+          if (wrapper) {
+            wrapper.addEventListener('click', () => {
+              openImageModal(imgSrc, p.name || '');
+            });
+          }
+        }
 
         container.appendChild(article);
       });
@@ -837,6 +938,42 @@
 
         tbody.appendChild(tr);
       });
+    }
+
+    /* ---------- IMAGE MODAL HELPERS ---------- */
+
+    function openImageModal(src, caption) {
+      const modal = document.getElementById('imageModal');
+      const imgEl = document.getElementById('imageModalImg');
+      const capEl = document.getElementById('imageModalCaption');
+      if (!modal || !imgEl || !capEl) return;
+
+      imgEl.src = src;
+      imgEl.alt = caption || '';
+      capEl.textContent = caption || '';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById('imageModal');
+      const imgEl = document.getElementById('imageModalImg');
+      const capEl = document.getElementById('imageModalCaption');
+      if (!modal || !imgEl || !capEl) return;
+
+      modal.classList.remove('open');
+      imgEl.src = '';
+      imgEl.alt = '';
+      capEl.textContent = '';
+      document.body.style.overflow = '';
+    }
+
+    function imageModalBackdropClick(event) {
+      const modal = document.getElementById('imageModal');
+      if (!modal) return;
+      if (event.target === modal) {
+        closeImageModal();
+      }
     }
 
     function escapeHTML(str) {
