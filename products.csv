@@ -4,10 +4,7 @@ name,price,pack,upc,expiry,notes,listed,image
 "Sesame Snaps 35g",0.40,"PK-36","872590000155","Jan 2027",,,sesamesnaps.jpg
 "Menthe Glacée 34g",1.65,"PK-24","064900409417","Nov 2025","PJC #595505",,blueexcelmints.jpg
 "Menthes Verte 34g",1.65,"PK-12x8=96","064900409424","Sept 2025","PJC #595504",,greenexcelmints.jpg
-"Excel Menthe Verte – Display",0.72,"PQT-27","0649313","JUIN 2026","PJC #968360, Master 540",,
-"Excel Menthe Polaire – Display",0.72,"PQT-27","0649443","JUIN 2026","PJC #830681, Master 540",,
-"Excel Menthe – Display",0.72,"PQT-27","0649323","JUIN 2026","PJC #968362, Master 540",,
-"Excel Menthe Balloune Blanche – Display",0.72,"PQT-27","064900409554","JUIN 2026","PJC #500818, Master 540",,
+"Excel Dis PQT 27 (9 Menthe Verte, 6 Polaire, 6 Menthe, 6 Balloune Blanche)",0.72,"PQT-27","", "JUIN 2026","Prepack: 9 Menthe Verte (UPC 0-649 / PJC #968360), 6 Menthe Polaire (UPC 0-649 / PJC #830681), 6 Menthe (UPC 0-649 / PJC #968362), 6 Balloune Blanche (UPC 06490 / PJC #500818)","yes",
 "KitKat 4 x 45g",3.50,"PK-24","059800218627","Mai 2026",,,
 "Aero 4 x 49g",3.50,"PK-24","059800094115","Juin 2026",,,
 "Mars 4 x 52g",3.50,"PK-24","058496328740","Août 2026",,,
