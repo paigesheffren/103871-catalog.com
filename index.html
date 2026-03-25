@@ -2,46 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>103871 Canada Ltd Catalogue</title>
-
-  <link rel="stylesheet" href="styles.css">
+  <title>103871 Canada Ltd - Product Catalogue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    :root {
+      --bg: #f5f5f7;
+      --bg-alt: #ffffff;
+      --primary: #111827;
+      --accent: #2563eb;
+      --accent-soft: #e5effff0;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 10px;
+      --shadow-soft: 0 8px 20px rgba(0,0,0,0.04);
+      --font: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      color: #111827;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
     }
 
     .page {
       max-width: 1200px;
-      margin: auto;
-      padding: 16px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
     }
 
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-    }
-
-    .controls-bar {
+    header {
       display: flex;
+      justify-content: space-between;
       flex-wrap: wrap;
-      gap: 8px;
       margin-bottom: 16px;
     }
 
-    .search-bar {
-      flex: 1;
+    .brand-name {
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .contact-block {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      font-size: 0.85rem;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: white;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .btn.primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .controls-bar {
+      margin: 12px 0;
       display: flex;
-      align-items: center;
-      gap: 6px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .search-bar {
+      display: flex;
+      flex: 1;
       border: 1px solid #e5e7eb;
       border-radius: 999px;
-      padding: 6px 10px;
-      background: #fff;
+      padding: 6px;
+      background: white;
     }
 
     .search-bar input {
@@ -52,145 +95,130 @@
 
     select {
       border-radius: 999px;
-      padding: 6px 10px;
+      padding: 6px;
       border: 1px solid #e5e7eb;
-      background: white;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.8rem;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     th, td {
       padding: 8px;
       border-bottom: 1px solid #e5e7eb;
-      text-align: left;
     }
 
-    th {
-      background: #f3f4f6;
-    }
+    th { background: #f3f4f6; }
 
     .catalogue {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
     }
 
-    .card {
+    .product {
       background: white;
-      border-radius: 10px;
       padding: 10px;
+      border-radius: 10px;
       border: 1px solid #e5e7eb;
     }
 
-    .btn {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: black;
-      color: white;
-      text-decoration: none;
-      font-size: 0.8rem;
-    }
   </style>
 </head>
 
 <body>
-  <div class="page">
+<div class="page">
 
-    <h1>103871 Canada Ltd Catalogue</h1>
-
-    <!-- BUTTON -->
-    <a class="btn" href="#catalogue">⬇️ View Full Catalogue</a>
-
-    <!-- ========================= -->
-    <!-- PJC SECTION (NOW FIRST) -->
-    <!-- ========================= -->
-    <section id="pjc-gillette-energizer" style="margin-bottom:32px;">
-
-      <h2>PJC Gillette – Energizer</h2>
-      <p style="color:#6b7280;">
-        Structured catalogue for Gillette & Energizer products.
-      </p>
-
-      <!-- PJC Controls -->
-      <div class="controls-bar">
-        <div class="search-bar">
-          🔍
-          <input id="pjcSearch" type="text" placeholder="Search PJC...">
-        </div>
-
-        <select id="pjcCategoryFilter">
-          <option value="all">All categories</option>
-          <option value="Gillette Cartridges">Gillette cartridges</option>
-          <option value="Gillette Razors">Gillette razors</option>
-          <option value="Energizer Alkaline">Energizer alkaline</option>
-          <option value="Energizer Lithium">Energizer lithium</option>
-        </select>
-      </div>
-
-      <!-- TABLE -->
-      <div style="overflow-x:auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>PJC #</th>
-              <th>UPC</th>
-              <th>Description</th>
-              <th>Case Pack</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody id="pjcTableBody"></tbody>
-        </table>
-      </div>
-
-      <div id="pjcEmpty" style="display:none;">
-        No results found.
-      </div>
-
-    </section>
-
-    <!-- ========================= -->
-    <!-- MAIN CATALOGUE -->
-    <!-- ========================= -->
-
-    <!-- CONTROLS -->
-    <div class="controls-bar">
-      <div class="search-bar">
-        🔍
-        <input id="searchInput" type="text" placeholder="Search products...">
-      </div>
-
-      <select id="listedFilter">
-        <option value="all">All</option>
-        <option value="listed">Listed</option>
-        <option value="unlisted">Unlisted</option>
-      </select>
-
-      <select id="sortSelect">
-        <option value="default">Default</option>
-        <option value="name-asc">Name A-Z</option>
-        <option value="price-asc">Price ↑</option>
-        <option value="price-desc">Price ↓</option>
-      </select>
+  <!-- HEADER -->
+  <header>
+    <div>
+      <div class="brand-name">103871 Canada Ltd</div>
+      <div>Wholesale Distribution</div>
     </div>
 
-    <!-- PRODUCTS -->
-    <section class="catalogue" id="catalogue"></section>
-
-    <div id="emptyState" style="display:none;">
-      No products match filters.
+    <div class="contact-block">
+      Fred Haroun<br>
+      514-502-8519<br>
+      fredharoun2@gmail.com
     </div>
+  </header>
 
+  <div style="margin-bottom:10px;">
+    <button class="btn primary" onclick="window.print()">🧾 Print</button>
+    <a class="btn" href="#catalogue">➡️ Full Catalogue</a>
   </div>
 
-  <!-- KEEP YOUR EXISTING JS FILE -->
-  <script src="script.js"></script>
+  <h1>Product Catalogue</h1>
+
+  <!-- ========================= -->
+  <!-- ✅ PJC FIRST -->
+  <!-- ========================= -->
+  <section id="pjc-gillette-energizer" style="margin-bottom:32px;">
+
+    <h2>PJC Gillette – Energizer</h2>
+
+    <div class="controls-bar">
+      <div class="search-bar">
+        <input id="pjcSearch" placeholder="Search PJC...">
+      </div>
+
+      <select id="pjcCategoryFilter">
+        <option value="all">All</option>
+        <option value="Gillette Cartridges">Gillette</option>
+        <option value="Energizer">Energizer</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>PJC #</th>
+          <th>UPC</th>
+          <th>Description</th>
+          <th>Case Pack</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="pjcTableBody"></tbody>
+    </table>
+
+    <div id="pjcEmpty" style="display:none;">No results</div>
+  </section>
+
+  <!-- ========================= -->
+  <!-- ORIGINAL CONTROLS -->
+  <!-- ========================= -->
+  <div class="controls-bar">
+    <div class="search-bar">
+      <input id="searchInput" placeholder="Search products..." oninput="applyFiltersAndSort()">
+    </div>
+
+    <select id="listedFilter" onchange="applyFiltersAndSort()">
+      <option value="all">All</option>
+      <option value="listed">Listed</option>
+      <option value="unlisted">Unlisted</option>
+    </select>
+
+    <select id="sortSelect" onchange="applyFiltersAndSort()">
+      <option value="default">Default</option>
+      <option value="name-asc">Name</option>
+      <option value="price-asc">Price ↑</option>
+      <option value="price-desc">Price ↓</option>
+    </select>
+  </div>
+
+  <!-- PRODUCTS -->
+  <section class="catalogue" id="catalogue"></section>
+  <div id="emptyState" style="display:none;">No products found</div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
