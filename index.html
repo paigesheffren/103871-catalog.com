@@ -1003,13 +1003,24 @@
         const tr = document.createElement('tr');
 
         tr.innerHTML = `
-          <td class="pjc-nowrap">${escapeHTML(item.category)}</td>
-          <td class="pjc-nowrap">${escapeHTML(item.code)}</td>
-          <td class="pjc-nowrap">${escapeHTML(item.upc)}</td>
-          <td>${escapeHTML(formatDescription(item.description))}</td>
-          <td class="pjc-nowrap">${escapeHTML(item.casePack)}</td>
-          <td class="pjc-right">${item.price ? escapeHTML(item.price) : ''}</td>
-        `;
+  <td class="pjc-nowrap">${escapeHTML(item.upc)}</td>
+  <td class="pjc-nowrap">${escapeHTML(item.code)}</td>
+  <td class="pjc-right">${item.price ? escapeHTML(item.price) : ''}</td>
+  <td>${escapeHTML(formatDescription(item.description))}</td>
+  <td class="pjc-nowrap">${escapeHTML(item.casePack)}</td>
+  <td class="pjc-nowrap">
+    ${item.upc ? `<img src="https://barcode.tec-it.com/barcode.ashx?data=${encodeURIComponent(item.upc)}&code=EAN13&translate-esc=false" style="height:40px;">` : ''}
+  </td>
+  <td>
+    <select>
+      <option value="">Qty</option>
+      <option>1</option>
+      <option>5</option>
+      <option>10</option>
+      <option>20</option>
+    </select>
+  </td>
+`;
 
         tbody.appendChild(tr);
       });
