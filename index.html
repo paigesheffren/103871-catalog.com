@@ -2,988 +2,195 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>103871 Canada Ltd - Product Catalogue</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>103871 Canada Ltd Catalogue</title>
+
+  <link rel="stylesheet" href="styles.css">
+
   <style>
-    :root {
-      --bg: #f5f5f7;
-      --bg-alt: #ffffff;
-      --primary: #111827;
-      --accent: #2563eb;
-      --accent-soft: #e5effff0;
-      --text: #111827;
-      --muted: #6b7280;
-      --border: #e5e7eb;
-      --radius: 10px;
-      --shadow-soft: 0 8px 20px rgba(0,0,0,0.04);
-      --font: system-ui, -apple-system, BlinkMacSystemFont, -apple-system, sans-serif;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.5;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      color: #111827;
     }
 
     .page {
       max-width: 1200px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
+      margin: auto;
+      padding: 16px;
     }
 
-    /* HEADER */
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
 
-    header {
+    .controls-bar {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
+      gap: 8px;
       margin-bottom: 16px;
     }
 
-    .brand-block {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .brand-name {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      color: var(--primary);
-    }
-
-    .brand-sub {
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .contact-block {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      padding: 10px 14px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .contact-label {
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    /* META / LEGEND / ACTIONS */
-
-    .top-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-
-    .meta {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .last-updated {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .legend {
-      display: flex;
-      gap: 10px;
-      font-size: 0.75rem;
-      flex-wrap: wrap;
-      align-items: center;
-      color: var(--muted);
-    }
-
-    .legend span {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .badge-listed {
-      padding: 2px 7px;
-      border-radius: 999px;
-      background: #d1fae5;
-      color: #065f46;
-      font-size: 0.7rem;
-      font-weight: 600;
-    }
-
-    .actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .btn {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--bg-alt);
-      font-size: 0.75rem;
-      color: var(--primary);
-      cursor: pointer;
-      box-shadow: var(--shadow-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-    }
-
-    .btn.primary {
-      background: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-    }
-
-    /* SEARCH / FILTER / SORT */
-
-    .controls-bar {
-      margin: 6px 0 18px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
     .search-bar {
-      flex: 1 1 220px;
+      flex: 1;
       display: flex;
       align-items: center;
       gap: 6px;
-      background: var(--bg-alt);
+      border: 1px solid #e5e7eb;
       border-radius: 999px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-    }
-
-    .search-bar span {
-      font-size: 0.75rem;
-      color: var(--muted);
+      padding: 6px 10px;
+      background: #fff;
     }
 
     .search-bar input {
-      flex: 1;
       border: none;
       outline: none;
-      font-size: 0.8rem;
-      background: transparent;
-      padding: 4px 2px;
+      flex: 1;
     }
 
     select {
-      padding: 7px 10px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      font-size: 0.75rem;
-      background: var(--bg-alt);
-      color: var(--primary);
-      outline: none;
+      padding: 6px 10px;
+      border: 1px solid #e5e7eb;
+      background: white;
     }
 
-    select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px var(--accent-soft);
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
     }
 
-    /* CATALOG GRID */
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
 
     .catalogue {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
     }
 
-    .product {
-      background: var(--bg-alt);
-      border-radius: var(--radius);
-      padding: 12px 12px 10px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      font-size: 0.8rem;
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px solid #e5e7eb;
     }
 
-    .product-image-wrap {
-      width: 100%;
-      height: 190px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: #ffffff;
-      margin-bottom: 4px;
-      cursor: zoom-in;
-      transition: box-shadow 0.15s ease, transform 0.15s ease;
-    }
-
-    .product-image-wrap:hover {
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-      transform: translateY(-1px);
-    }
-
-    .product-image-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-      pointer-events: none; /* click handled on wrapper */
-    }
-
-    .product-main {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .product-header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .product-name-block {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .product-name {
-      font-weight: 600;
-      color: var(--primary);
-      font-size: 0.9rem;
-    }
-
-    .product-code {
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .price {
-      font-weight: 700;
-      color: var(--accent);
-      font-size: 0.95rem;
-      white-space: nowrap;
-    }
-
-    .product-meta {
-      font-size: 0.75rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 10px;
-    }
-
-    .product-meta span::before {
-      content: "• ";
-    }
-
-    .product-meta span:first-child::before {
-      content: "";
-    }
-
-    .details {
-      display: grid;
-      grid-template-columns: 1.1fr 1.9fr;
-      gap: 3px 8px;
-      align-content: flex-start;
-    }
-
-    .label {
-      color: var(--muted);
-      font-size: 0.68rem;
-    }
-
-    .value {
-      font-size: 0.75rem;
-      color: var(--primary);
-      word-break: break-word;
-    }
-
-    .empty-state {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-top: 16px;
-    }
-
-    /* IMAGE MODAL (LIGHTBOX) */
-
-    .image-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.65);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 50;
-      padding: 20px;
-    }
-
-    .image-modal-backdrop.open {
-      display: flex;
-    }
-
-    .image-modal-content {
-      position: relative;
-      max-width: 90vw;
-      max-height: 90vh;
-      background: #ffffff;
-      border-radius: 14px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      padding: 10px 10px 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .image-modal-img {
-      max-width: 100%;
-      max-height: 80vh;
-      object-fit: contain;
-      display: block;
-      border-radius: 8px;
-    }
-
-    .image-modal-caption {
-      font-size: 0.8rem;
-      color: #4b5563;
-      text-align: center;
-      margin-top: 2px;
-    }
-
-    .image-modal-close {
-      position: absolute;
-      top: 6px;
-      right: 8px;
-      width: 26px;
-      height: 26px;
+    .btn {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border: none;
-      background: rgba(17,24,39,0.85);
-      color: #f9fafb;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .image-modal-close:hover {
-      background: rgba(17,24,39,1);
-    }
-
-    /* PRINT STYLES */
-
-    @media print {
-      body {
-        background: #ffffff;
-      }
-      .page {
-        padding: 10px 10px 20px;
-      }
-      .actions,
-      .controls-bar {
-        display: none !important;
-      }
-      .product {
-        box-shadow: none;
-      }
-      .image-modal-backdrop {
-        display: none !important;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .page {
-        padding: 16px 10px 28px;
-      }
-      .brand-name {
-        font-size: 1.3rem;
-      }
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .catalogue {
-        grid-template-columns: 1fr;
-      }
+      background: black;
+      color: white;
+      text-decoration: none;
+      font-size: 0.8rem;
     }
   </style>
 </head>
+
 <body>
   <div class="page">
-    <!-- HEADER -->
-    <header>
-      <div class="brand-block">
-        <div class="brand-name">103871 Canada Ltd</div>
-        <div class="brand-sub">Wholesale Health, Beauty, Confectionery &amp; General Merchandise</div>
-      </div>
-      <div class="contact-block">
-        <div class="contact-label">Contact</div>
-        <div>Fred Haroun</div>
-        <div>Cell: <a href="tel:15145028519">514-502-8519</a></div>
-        <div>Fax: 1-866-516-1271</div>
-        <div>Email: <a href="mailto:fredharoun2@gmail.com">fredharoun2@gmail.com</a></div>
-      </div>
-    </header>
 
-    <!-- META + ACTIONS -->
-    <div class="top-row">
-      <div class="meta">
-        <div class="last-updated">
-          Catalogue generated from latest <strong>products.csv</strong>.
-        </div>
-        <div class="legend">
-          <span><span class="badge-listed">LISTED</span> = Key retail / pharmacy listed</span>
-          <span>Edit products in <strong>products.csv</strong> to update this page.</span>
-        </div>
-      </div>
-      <div class="actions">
-        <button class="btn primary" onclick="window.print()">🧾 Print / Save as PDF</button>
-        <a class="btn" href="#pjc-gillette-energizer">➡️ Go directly to PJC Gillette – Energizer</a>
-      </div>
-    </div>
+    <h1>103871 Canada Ltd Catalogue</h1>
 
-    <!-- CONTROLS: SEARCH / FILTER / SORT -->
-    <div class="controls-bar">
-      <div class="search-bar">
-        <span>🔍</span>
-        <input
-          type="text"
-          id="searchInput"
-          placeholder="Search by product name, code, UPC or notes..."
-          oninput="applyFiltersAndSort()" />
-      </div>
+    <!-- BUTTON -->
+    <a class="btn" href="#catalogue">⬇️ View Full Catalogue</a>
 
-      <select id="listedFilter" onchange="applyFiltersAndSort()">
-        <option value="all">All products</option>
-        <option value="listed">Listed only</option>
-        <option value="unlisted">Unlisted only</option>
-      </select>
+    <!-- ========================= -->
+    <!-- PJC SECTION (NOW FIRST) -->
+    <!-- ========================= -->
+    <section id="pjc-gillette-energizer" style="margin-bottom:32px;">
 
-      <select id="sortSelect" onchange="applyFiltersAndSort()">
-        <option value="default">Sort: Default</option>
-        <option value="name-asc">Name (A–Z)</option>
-        <option value="price-asc">Price (Low → High)</option>
-        <option value="price-desc">Price (High → Low)</option>
-      </select>
-    </div>
-
-    <!-- PRODUCT CATALOGUE -->
-    <section class="catalogue" id="catalogue"></section>
-    <div class="empty-state" id="emptyState" style="display:none;">
-      No products match your search/filters. Check your filters or your products.csv file.
-    </div>
-
-    <!-- PJC GILLETTE – ENERGIZER SECTION (TABLE ONLY) -->
-    <section id="pjc-gillette-energizer" style="margin-top:32px">
-      <h2 style="font-size:1.1rem;margin-bottom:4px;color:#111827;">
-        PJC Gillette – Energizer
-      </h2>
-      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:10px;">
-        Structured catalogue based on the PJC Gillette &amp; Energizer sheet.
-        Search or filter the items below.
+      <h2>PJC Gillette – Energizer</h2>
+      <p style="color:#6b7280;">
+        Structured catalogue for Gillette & Energizer products.
       </p>
 
       <!-- PJC Controls -->
-      <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;font-size:0.8rem;">
-        <div style="flex:1 1 220px;display:flex;align-items:center;gap:6px;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;background:#fff;">
-          <span style="font-size:0.75rem;color:#6b7280;">🔍</span>
-          <input
-            id="pjcSearch"
-            type="text"
-            placeholder="Search PJC by description, code or UPC..."
-            style="flex:1;border:none;outline:none;font-size:0.8rem;background:transparent;padding:4px 2px;">
+      <div class="controls-bar">
+        <div class="search-bar">
+          🔍
+          <input id="pjcSearch" type="text" placeholder="Search PJC...">
         </div>
-        <select id="pjcCategoryFilter" style="padding:7px 10px;border-radius:999px;border:1px solid #e5e7eb;font-size:0.75rem;background:#fff;">
+
+        <select id="pjcCategoryFilter">
           <option value="all">All categories</option>
           <option value="Gillette Cartridges">Gillette cartridges</option>
           <option value="Gillette Razors">Gillette razors</option>
           <option value="Energizer Alkaline">Energizer alkaline</option>
           <option value="Energizer Lithium">Energizer lithium</option>
-          <option value="Energizer Specialty">Energizer specialty</option>
-          <option value="Energizer Hearing">Energizer hearing</option>
         </select>
       </div>
 
-      <!-- PJC Table -->
+      <!-- TABLE -->
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:0.78rem;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e5e7eb;">
-          <thead style="background:#f3f4f6;">
+        <table>
+          <thead>
             <tr>
-              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Category</th>
-              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">PJC #</th>
-              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">UPC</th>
-              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Description</th>
-              <th style="text-align:left;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Case Pack</th>
-              <th style="text-align:right;padding:8px 10px;border-bottom:1px solid #e5e7eb;">Price ($)</th>
+              <th>Category</th>
+              <th>PJC #</th>
+              <th>UPC</th>
+              <th>Description</th>
+              <th>Case Pack</th>
+              <th>Price</th>
             </tr>
           </thead>
           <tbody id="pjcTableBody"></tbody>
         </table>
       </div>
 
-      <div id="pjcEmpty" style="display:none;font-size:0.8rem;color:#6b7280;margin-top:8px;">
-        No PJC items match your search/filters.
+      <div id="pjcEmpty" style="display:none;">
+        No results found.
       </div>
+
     </section>
-  </div>
 
-  <!-- IMAGE LIGHTBOX MODAL -->
-  <div id="imageModal" class="image-modal-backdrop" onclick="imageModalBackdropClick(event)">
-    <div class="image-modal-content">
-      <button type="button" class="image-modal-close" onclick="closeImageModal()">×</button>
-      <img id="imageModalImg" class="image-modal-img" src="" alt="">
-      <div id="imageModalCaption" class="image-modal-caption"></div>
+    <!-- ========================= -->
+    <!-- MAIN CATALOGUE -->
+    <!-- ========================= -->
+
+    <!-- CONTROLS -->
+    <div class="controls-bar">
+      <div class="search-bar">
+        🔍
+        <input id="searchInput" type="text" placeholder="Search products...">
+      </div>
+
+      <select id="listedFilter">
+        <option value="all">All</option>
+        <option value="listed">Listed</option>
+        <option value="unlisted">Unlisted</option>
+      </select>
+
+      <select id="sortSelect">
+        <option value="default">Default</option>
+        <option value="name-asc">Name A-Z</option>
+        <option value="price-asc">Price ↑</option>
+        <option value="price-desc">Price ↓</option>
+      </select>
     </div>
+
+    <!-- PRODUCTS -->
+    <section class="catalogue" id="catalogue"></section>
+
+    <div id="emptyState" style="display:none;">
+      No products match filters.
+    </div>
+
   </div>
 
-  <script>
-    const CSV_FILE = 'products.csv';
-    const PJC_CSV_FILE = 'pjc_gillette_energizer.csv';
-
-    let allProducts = [];
-    let pjcProducts = [];
-
-    document.addEventListener('DOMContentLoaded', () => {
-      loadProducts();
-      loadPjcProducts();
-
-      const mainSearch = document.getElementById('searchInput');
-      if (mainSearch) {
-        mainSearch.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' && mainSearch.value.trim().toLowerCase() === 'pjc') {
-            location.hash = '#pjc-gillette-energizer';
-          }
-        });
-      }
-
-      const pjcSearch = document.getElementById('pjcSearch');
-      if (pjcSearch) {
-        pjcSearch.addEventListener('input', applyPjcFilters);
-      }
-      const pjcCategory = document.getElementById('pjcCategoryFilter');
-      if (pjcCategory) {
-        pjcCategory.addEventListener('change', applyPjcFilters);
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeImageModal();
-        }
-      });
-    });
-
-    /* ---------- MAIN CATALOG (products.csv) ---------- */
-
-    async function loadProducts() {
-      try {
-        const res = await fetch(CSV_FILE + '?t=' + Date.now());
-        if (!res.ok) {
-          console.error('Could not load products.csv');
-          return;
-        }
-        const text = await res.text();
-        allProducts = parseProductsCSV(text);
-        applyFiltersAndSort();
-      } catch (e) {
-        console.error('Error loading products:', e);
-      }
-    }
-
-    function parseProductsCSV(text) {
-      const rows = text.trim().split(/\r?\n/);
-      if (rows.length <= 1) return [];
-
-      const headers = rows[0].split(',').map(h => h.trim().toLowerCase());
-      const products = [];
-
-      for (let i = 1; i < rows.length; i++) {
-        const row = rows[i].trim();
-        if (!row) continue;
-
-        const cols = smartSplit(row);
-        const obj = {};
-        headers.forEach((h, idx) => {
-          obj[h] = (cols[idx] || '').trim();
-        });
-
-        const listedVal = (obj.listed || '').toString().toLowerCase();
-        const listed =
-          listedVal === 'yes' || listedVal === 'y' ||
-          listedVal === 'listed' || listedVal === '1' || listedVal === 'true';
-
-        const priceNum = parseFloat(obj.price);
-        const price = isNaN(priceNum) ? '' : priceNum.toFixed(2);
-
-        products.push({
-          code: obj.code || '',
-          name: obj.name || '',
-          price: price,
-          rawPrice: isNaN(priceNum) ? null : priceNum,
-          pack: obj.pack || '',
-          upc: obj.upc || '',
-          expiry: obj.expiry || '',
-          notes: obj.notes || '',
-          listed: listed,
-          image: obj.image || ''
-        });
-      }
-      return products;
-    }
-
-    function smartSplit(line) {
-      const result = [];
-      let current = '';
-      let inQuotes = false;
-
-      for (let i = 0; i < line.length; i++) {
-        const char = line[i];
-        if (char === '"') {
-          inQuotes = !inQuotes;
-        } else if (char === ',' && !inQuotes) {
-          result.push(current);
-          current = '';
-        } else {
-          current += char;
-        }
-      }
-      result.push(current);
-      return result;
-    }
-
-    function applyFiltersAndSort() {
-      if (!Array.isArray(allProducts)) return;
-
-      const term = (document.getElementById('searchInput')?.value || '')
-        .toLowerCase().trim();
-      const listedFilter = document.getElementById('listedFilter')?.value || 'all';
-      const sortValue = document.getElementById('sortSelect')?.value || 'default';
-
-      let filtered = allProducts.filter(p => {
-        const haystack = [
-          p.code,
-          p.name,
-          p.upc,
-          p.pack,
-          p.expiry,
-          p.notes
-        ].join(' ').toLowerCase();
-
-        const matchesSearch = !term || haystack.includes(term);
-        const matchesListed =
-          listedFilter === 'all' ||
-          (listedFilter === 'listed' && p.listed) ||
-          (listedFilter === 'unlisted' && !p.listed);
-
-        return matchesSearch && matchesListed;
-      });
-
-      if (sortValue === 'name-asc') {
-        filtered.sort((a, b) =>
-          (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })
-        );
-      } else if (sortValue === 'price-asc') {
-        filtered.sort((a, b) => {
-          const pa = a.rawPrice ?? Number.POSITIVE_INFINITY;
-          const pb = b.rawPrice ?? Number.POSITIVE_INFINITY;
-          return pa - pb;
-        });
-      } else if (sortValue === 'price-desc') {
-        filtered.sort((a, b) => {
-          const pa = a.rawPrice ?? -1;
-          const pb = b.rawPrice ?? -1;
-          return pb - pa;
-        });
-      }
-
-      renderProducts(filtered);
-    }
-
-    function renderProducts(products) {
-      const container = document.getElementById('catalogue');
-      const emptyState = document.getElementById('emptyState');
-
-      if (!container) return;
-
-      container.innerHTML = '';
-
-      if (!products.length) {
-        if (emptyState) emptyState.style.display = 'block';
-        return;
-      }
-
-      if (emptyState) emptyState.style.display = 'none';
-
-      products.forEach(p => {
-        const article = document.createElement('article');
-        article.className = 'product';
-
-        const rawImage = (p.image || '').trim();
-        const hasImage = rawImage.length > 0;
-        let imgSrc = '';
-
-        if (hasImage) {
-          if (/^https?:\/\//i.test(rawImage)) {
-            imgSrc = rawImage;
-          } else if (rawImage.toLowerCase().startsWith('images/')) {
-            imgSrc = rawImage;
-          } else {
-            imgSrc = 'images/' + rawImage;
-          }
-        }
-
-        article.innerHTML = `
-          ${hasImage ? `
-            <div class="product-image-wrap">
-              <img src="${escapeHTML(imgSrc)}" alt="${escapeHTML(p.name || '')}">
-            </div>
-          ` : ''}
-
-          <div class="product-main">
-            <div class="product-header-top">
-              <div class="product-name-block">
-                <div class="product-name">${escapeHTML(p.name || '')}</div>
-                <div class="product-code">
-                  ${p.code ? 'Code: ' + escapeHTML(p.code) : ''}
-                  ${p.upc ? (p.code ? ' · ' : '') + 'UPC: ' + escapeHTML(p.upc) : ''}
-                </div>
-              </div>
-              <div class="price">
-                ${p.price ? '$' + escapeHTML(p.price) : ''}
-              </div>
-            </div>
-
-            <div class="product-meta">
-              ${p.pack ? `<span>Pack: ${escapeHTML(p.pack)}</span>` : ''}
-              ${p.expiry ? `<span>Expiry: ${escapeHTML(p.expiry)}</span>` : ''}
-            </div>
-
-            <div class="details">
-              ${p.notes ? `
-                <div class="label">Notes</div>
-                <div class="value">${escapeHTML(p.notes)}</div>
-              ` : ''}
-              ${p.listed ? `
-                <div class="label">Status</div>
-                <div class="value"><span class="badge-listed">LISTED</span></div>
-              ` : ''}
-            </div>
-          </div>
-        `;
-
-        if (hasImage) {
-          const wrapper = article.querySelector('.product-image-wrap');
-          if (wrapper) {
-            wrapper.addEventListener('click', () => {
-              openImageModal(imgSrc, p.name || '');
-            });
-          }
-        }
-
-        container.appendChild(article);
-      });
-    }
-
-    /* ---------- PJC GILLETTE / ENERGIZER (pjc_gillette_energizer.csv) ---------- */
-
-    async function loadPjcProducts() {
-      try {
-        const res = await fetch(PJC_CSV_FILE + '?t=' + Date.now());
-        if (!res.ok) {
-          console.error('Could not load pjc_gillette_energizer.csv');
-          return;
-        }
-        const text = await res.text();
-        pjcProducts = parsePjcCSV(text);
-        applyPjcFilters();
-      } catch (e) {
-        console.error('Error loading PJC products:', e);
-      }
-    }
-
-    function parsePjcCSV(text) {
-      const rows = text.trim().split(/\r?\n/);
-      if (rows.length <= 1) return [];
-
-      const headers = rows[0].split(',').map(h => h.trim().toLowerCase());
-      const items = [];
-
-      for (let i = 1; i < rows.length; i++) {
-        const row = rows[i].trim();
-        if (!row) continue;
-        const cols = smartSplit(row);
-        const obj = {};
-        headers.forEach((h, idx) => {
-          obj[h] = (cols[idx] || '').trim();
-        });
-
-        const priceNum = parseFloat(obj.price);
-        const category = obj.category || '';
-        const pjcCode = obj['pjc#'] || obj.pjc || '';
-        const casePack = obj['case pack'] || obj.casepack || '';
-
-        items.push({
-          category: category,
-          code: pjcCode,
-          upc: obj.upc || '',
-          description: obj.description || '',
-          casePack: casePack,
-          price: isNaN(priceNum) ? '' : priceNum.toFixed(2),
-          rawPrice: isNaN(priceNum) ? null : priceNum
-        });
-      }
-      return items;
-    }
-
-    function applyPjcFilters() {
-      if (!Array.isArray(pjcProducts)) return;
-
-      const searchVal = (document.getElementById('pjcSearch')?.value || '')
-        .toLowerCase().trim();
-      const catVal = document.getElementById('pjcCategoryFilter')?.value || 'all';
-
-      let filtered = pjcProducts.filter(item => {
-        const haystack = [
-          item.category,
-          item.code,
-          item.upc,
-          item.description,
-          item.casePack
-        ].join(' ').toLowerCase();
-
-        const matchesSearch = !searchVal || haystack.includes(searchVal);
-        const matchesCat =
-          catVal === 'all' || item.category === catVal;
-
-        return matchesSearch && matchesCat;
-      });
-
-      filtered.sort((a, b) => {
-        const c = (a.category || '').localeCompare(b.category || '');
-        if (c !== 0) return c;
-        return (a.description || '').localeCompare(b.description || '');
-      });
-
-      renderPjcTable(filtered);
-    }
-
-    function formatDescription(desc) {
-      return String(desc).replace(/ ?[Xx] ?(\d+)/g, ' - $1');
-    }
-
-    function renderPjcTable(items) {
-      const tbody = document.getElementById('pjcTableBody');
-      const empty = document.getElementById('pjcEmpty');
-      if (!tbody) return;
-
-      tbody.innerHTML = '';
-
-      if (!items.length) {
-        if (empty) empty.style.display = 'block';
-        return;
-      }
-      if (empty) empty.style.display = 'none';
-
-      items.forEach(item => {
-        const tr = document.createElement('tr');
-
-        tr.innerHTML = `
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.category)}</td>
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.code)}</td>
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.upc)}</td>
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;">${escapeHTML(formatDescription(item.description))}</td>
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;white-space:nowrap;">${escapeHTML(item.casePack)}</td>
-          <td style="padding:7px 10px;border-bottom:1px solid #e5e7eb;text-align:right;">${item.price ? item.price : ''}</td>
-        `;
-
-        tbody.appendChild(tr);
-      });
-    }
-
-    /* ---------- IMAGE MODAL HELPERS ---------- */
-
-    function openImageModal(src, caption) {
-      const modal = document.getElementById('imageModal');
-      const imgEl = document.getElementById('imageModalImg');
-      const capEl = document.getElementById('imageModalCaption');
-      if (!modal || !imgEl || !capEl) return;
-
-      imgEl.src = src;
-      imgEl.alt = caption || '';
-      capEl.textContent = caption || '';
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeImageModal() {
-      const modal = document.getElementById('imageModal');
-      const imgEl = document.getElementById('imageModalImg');
-      const capEl = document.getElementById('imageModalCaption');
-      if (!modal || !imgEl || !capEl) return;
-
-      modal.classList.remove('open');
-      imgEl.src = '';
-      imgEl.alt = '';
-      capEl.textContent = '';
-      document.body.style.overflow = '';
-    }
-
-    function imageModalBackdropClick(event) {
-      const modal = document.getElementById('imageModal');
-      if (!modal) return;
-      if (event.target === modal) {
-        closeImageModal();
-      }
-    }
-
-    function escapeHTML(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
-  </script>
+  <!-- KEEP YOUR EXISTING JS FILE -->
+  <script src="script.js"></script>
 </body>
 </html>
